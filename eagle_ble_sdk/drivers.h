@@ -47,7 +47,7 @@
 
 #include "drivers/B91/driver_b91.h"
 #include "drivers/B91/ext_driver/driver_ext.h"
-#include "types.h"
+// #include "types.h"
 
 #include "common/assert.h"
 

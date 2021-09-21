@@ -101,12 +101,14 @@
 
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 
-
-extern u32 flash_sector_mac_address;
-extern u32 flash_sector_calibration;
+extern uint32_t flash_sector_mac_address;
+extern uint32_t flash_sector_calibration;
 
 
 
@@ -116,7 +118,7 @@ extern u32 flash_sector_calibration;
  * @param[in]	en - enable the external crystal capacitor
  * @return      none
  */
-static inline void blc_app_setExternalCrystalCapEnable(u8  en)
+static inline void blc_app_setExternalCrystalCapEnable(uint8_t  en)
 {
 	blt_miscParam.ext_cap_en = en;
 
@@ -137,7 +139,7 @@ static inline void blc_app_loadCustomizedParameters(void)
 		 //customize freq_offset adjust cap value, if not customized, default ana_8A is 0x60
 		 //for 1M  Flash, flash_sector_calibration equals to 0xFE000
 		 if(flash_sector_calibration){
-			 u8 cap_frqoft;
+			 uint8_t cap_frqoft;
 			 flash_read_page(flash_sector_calibration + CALIB_OFFSET_CAP_INFO, 1, &cap_frqoft);
 			 if( cap_frqoft != 0xff ){
 				 analog_write_reg8(0x8A, (analog_read_reg8(0x8A) & 0xc0)|(cap_frqoft & 0x3f));
@@ -153,7 +155,7 @@ static inline void blc_app_loadCustomizedParameters(void)
  * @param[in]	none
  * @return      none
  */
-void blc_readFlashSize_autoConfigCustomFlashSector(void);
+void blc_readFlashSize_autoConfigCustomFlashSector(void) __attribute__((noinline));
 
 /**
  * @brief		This function is used to initialize the MAC address
@@ -162,9 +164,12 @@ void blc_readFlashSize_autoConfigCustomFlashSector(void);
  * @param[in]	mac_random_static - random static MAC address
  * @return      none
  */
-void blc_initMacAddress(int flash_addr, u8 *mac_public, u8 *mac_random_static);
+void blc_initMacAddress(int flash_addr, uint8_t *mac_public, uint8_t *mac_random_static);
 
 
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* BLT_COMMON_H_ */

@@ -45,39 +45,36 @@
  *******************************************************************************************************/
 #pragma once
 
-
-
-#include "audio.h"
 #include "analog.h"
+#include "audio.h"
 #include "dma.h"
+#include "flash.h"
 #include "gpio.h"
 #include "i2c.h"
-#include "spi.h"
-#include "pwm.h"
 #include "pm.h"
+#include "pwm.h"
+#include "s7816.h"
+#include "spi.h"
 #include "timer.h"
-#include "flash.h"
 #include "usbhw.h"
 #include "watchdog.h"
-#include "s7816.h"
-#include "nds_intrinsic.h"
+// #include "nds_intrinsic.h"
 #include "mdec.h"
 
 #include "trng.h"
 
-#include "sys.h"
+#include "aes.h"
 #include "pke.h"
 #include "plic.h"
-#include "uart.h"
 #include "stimer.h"
-#include "aes.h"
+#include "sys.h"
+#include "uart.h"
 
 #include "rf.h"
 
-#include "lpc.h"
 #include "clock.h"
 #include "emi.h"
+#include "lpc.h"
 
-#include "mspi.h"
 #include "adc.h"
-
+#include "mspi.h"

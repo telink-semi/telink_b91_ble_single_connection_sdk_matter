@@ -229,7 +229,7 @@ _attribute_text_sec_ void flash_release_deep_powerdown(void);
  * @param[in] 	buf		- store MID of flash
  * @return    	none.
  */
-_attribute_text_sec_ void flash_read_mid(unsigned char *buf);
+_attribute_text_sec_ unsigned int flash_read_mid(void);
 
 /**
  * @brief	  	This function serves to read UID of flash
@@ -285,4 +285,3 @@ _attribute_text_sec_ void flash_set_xip_config(flash_xip_config_t config);
  * @return		none.
  */
 _attribute_ram_code_sec_noinline_ void flash_send_cmd(unsigned char cmd);
-

@@ -64,8 +64,8 @@
 // http://gcc.gnu.org/ml/gcc-help/2010-10/msg00196.html
 // http://stackoverflow.com/questions/3030099/c-c-pragma-in-define-macro
 
-#define _STRINGIFY(x) #x
-#define STRINGIFY(x) _STRINGIFY(x)
+// #define _STRINGIFY(x) #x
+// #define STRINGIFY(x) _STRINGIFY(x)
 
 #ifdef __GNUC__
 #define COMPILE_MESSAGE(x) _Pragma (#x)
@@ -100,5 +100,3 @@
 #else
 #define NOTE(x)
 #endif
-
-

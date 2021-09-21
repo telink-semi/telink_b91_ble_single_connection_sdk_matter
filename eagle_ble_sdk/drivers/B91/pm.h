@@ -258,7 +258,7 @@ static inline unsigned char pm_get_deep_retention_flag(void)
  */
 static inline pm_wakeup_status_e pm_get_wakeup_src(void)
 {
-	return analog_read_reg8(0x64);
+	return (pm_wakeup_status_e) analog_read_reg8(0x64);
 }
 
 /**

@@ -48,7 +48,7 @@
 #define DRIVERS_B91_DRIVER_EXT_EXT_PM_H_
 
 #include "../pm.h"
-#include "types.h"
+// #include "types.h"
 
 #ifndef	PM_32k_RC_CALIBRATION_ALGORITHM_EN
 #define PM_32k_RC_CALIBRATION_ALGORITHM_EN	1

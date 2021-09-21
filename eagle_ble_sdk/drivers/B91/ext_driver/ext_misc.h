@@ -47,7 +47,12 @@
 #ifndef DRIVERS_B91_EXT_MISC_H_
 #define DRIVERS_B91_EXT_MISC_H_
 
-#include "nds_intrinsic.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+// #include "nds_intrinsic.h"
+#include <stdint.h>
 
 #include "../analog.h"
 #include "../dma.h"
@@ -62,7 +67,7 @@
 #include "../stimer.h"
 #include "../clock.h"
 #include "../uart.h"
-#include "types.h"
+// #include "types.h"
 #include "compiler.h"
 
 /******************************* stimer_start ******************************************************************/
@@ -83,7 +88,6 @@ typedef enum {
 	STIMER_IRQ_CLR	     		=   BIT(0),
 	STIMER_32K_CAL_IRQ_CLR     	=   BIT(1),
 }stimer_irq_clr_e;
-
 
 /**
  * @brief    This function serves to enable system timer interrupt.
@@ -135,9 +139,9 @@ static inline unsigned int systimer_get_irq_capture(void)
 	return reg_system_irq_level;
 }
 
-static inline int tick1_exceed_tick2(u32 tick1, u32 tick2)
+static inline int tick1_exceed_tick2(uint32_t tick1, uint32_t tick2)
 {
-	return (u32)(tick1 - tick2) < BIT(30);
+	return (uint32_t)(tick1 - tick2) < BIT(30);
 }
 /******************************* stimer_end ********************************************************************/
 
@@ -150,9 +154,9 @@ extern unsigned int aes_data_buff[8];
 
 
 /******************************* core_start ******************************************************************/
-#define  irq_disable		core_interrupt_disable
-#define	 irq_enable			core_interrupt_enable
-#define  irq_restore(en)	core_restore_interrupt(en)
+// #define  irq_disable		core_interrupt_disable
+// #define	 irq_enable			core_interrupt_enable
+// #define  irq_restore(en)	core_restore_interrupt(en)
 /******************************* core_end ********************************************************************/
 
 
@@ -279,7 +283,7 @@ enum{//todo
 
 
 /******************************* flash_start *****************************************************************/
-_attribute_text_code_ unsigned int flash_get_jedec_id(void);
+unsigned int flash_get_jedec_id(void) __attribute__((section(".text")));
 void flash_set_capacity(flash_capacity_e flash_cap);
 flash_capacity_e flash_get_capacity(void);
 
@@ -300,8 +304,11 @@ flash_capacity_e flash_get_capacity(void);
 
 
 /******************************* uart_start ******************************************************************/
-_attribute_ram_code_ void uart_receive_dma_set(dma_chn_e chn, unsigned char * addr,unsigned int rev_size);
+void uart_receive_dma_set(dma_chn_e chn, unsigned char * addr,unsigned int rev_size) __attribute__((section(".ram_code"))) __attribute__((noinline));
 /******************************* uart_end ********************************************************************/
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* DRIVERS_B91_EXT_MISC_H_ */
