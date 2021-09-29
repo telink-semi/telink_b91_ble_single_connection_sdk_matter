@@ -58,7 +58,6 @@
 #include "timer.h"
 #include "usbhw.h"
 #include "watchdog.h"
-// #include "nds_intrinsic.h"
 #include "mdec.h"
 
 #include "trng.h"

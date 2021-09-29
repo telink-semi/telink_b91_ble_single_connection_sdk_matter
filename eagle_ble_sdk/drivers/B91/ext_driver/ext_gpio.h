@@ -47,7 +47,6 @@
 #ifndef DRIVERS_B91_EXT_GPIO_H_
 #define DRIVERS_B91_EXT_GPIO_H_
 
-// #include "nds_intrinsic.h"
 #include "compiler.h"
 
 #include "../analog.h"
