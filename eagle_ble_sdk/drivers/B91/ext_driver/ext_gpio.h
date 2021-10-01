@@ -47,7 +47,6 @@
 #ifndef DRIVERS_B91_EXT_GPIO_H_
 #define DRIVERS_B91_EXT_GPIO_H_
 
-#include "nds_intrinsic.h"
 #include "compiler.h"
 
 #include "../analog.h"
@@ -99,6 +98,10 @@ typedef enum {
 	PM_PIN_PULLUP_10K 		= 3,
 }gpio_pull_type;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief     This function set a pin's pull-up/down resistor.
  * @param[in] gpio - the pin needs to set its pull-up/down resistor
@@ -107,6 +110,8 @@ typedef enum {
  */
 void gpio_setup_up_down_resistor(gpio_pin_e gpio, gpio_pull_type up_down);
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* DRIVERS_B91_EXT_GPIO_H_ */

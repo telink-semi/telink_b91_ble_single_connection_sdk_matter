@@ -51,7 +51,9 @@
 #define BAT_DEEP_THRES_MV				2000   // 2000 mV low battery alarm
 #define BAT_SUSPEND_THRES_MV			1800   // 1800 mV low battery alarm
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 void battery_set_detect_enable (int en);
 int  battery_get_detect_enable (void);
@@ -60,6 +62,10 @@ int  battery_get_detect_enable (void);
 _attribute_ram_code_ void app_battery_power_check(u16 threshold_deep_vol_mv, u16 threshold_suspend_vol_mv);
 #else
 void app_battery_power_check(u16 alram_vol_mv);
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif /* APP_BATTDET_H_ */

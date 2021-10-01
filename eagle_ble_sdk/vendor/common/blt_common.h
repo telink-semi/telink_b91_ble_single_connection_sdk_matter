@@ -108,8 +108,9 @@
 extern u32 flash_sector_mac_address;
 extern u32 flash_sector_calibration;
 
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief		This function is used to enable the external crystal capacitor
@@ -153,7 +154,7 @@ static inline void blc_app_loadCustomizedParameters(void)
  * @param[in]	none
  * @return      none
  */
-void blc_readFlashSize_autoConfigCustomFlashSector(void);
+void blc_readFlashSize_autoConfigCustomFlashSector(void) __attribute__((noinline));
 
 /**
  * @brief		This function is used to initialize the MAC address
@@ -165,6 +166,8 @@ void blc_readFlashSize_autoConfigCustomFlashSector(void);
 void blc_initMacAddress(int flash_addr, u8 *mac_public, u8 *mac_random_static);
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* BLT_COMMON_H_ */

@@ -156,10 +156,9 @@ typedef enum {
 
 }pwm_clk_32k_en_chn_e;
 
-
-
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief     This function servers to set pwm clock frequency, when pwm clock source is pclk.
@@ -562,7 +561,9 @@ void pwm_set_dma_chain_llp(dma_chn_e chn,unsigned short * src_addr, unsigned int
  */
 void pwm_set_tx_dma_add_list_element(dma_chn_e chn,dma_chain_config_t *config_addr,dma_chain_config_t *llponit ,unsigned short * src_addr,unsigned int data_len);
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

@@ -102,7 +102,7 @@ typedef enum{
 		GPIO_PB6 = GPIO_GROUPB | BIT(6),
 		GPIO_PB7 = GPIO_GROUPB | BIT(7),
 
-		GPIO_PC0 = GPIO_GROUPC | BIT(0),
+		GPIO_PC0 = GPIO_GROUPC | BIT(0),GPIO_SWM=GPIO_PC0,
 		GPIO_PC1 = GPIO_GROUPC | BIT(1),
 		GPIO_PC2 = GPIO_GROUPC | BIT(2),
 		GPIO_PC3 = GPIO_GROUPC | BIT(3),
@@ -192,7 +192,9 @@ typedef enum {
 }gpio_pull_type_e;
 
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      This function servers to enable gpio function.
@@ -511,6 +513,9 @@ void gpio_set_up_down_res(gpio_pin_e pin, gpio_pull_type_e up_down_res);
  */
 void gpio_set_pullup_res_30k(gpio_pin_e pin);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

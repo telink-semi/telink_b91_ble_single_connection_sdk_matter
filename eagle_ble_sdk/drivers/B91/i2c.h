@@ -119,6 +119,10 @@ typedef enum{
 I2C_TX_DONE_CLR  		= BIT(4),
 }i2c_irq_clr_e;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief      The function of this API is to determine whether the bus is busy.
  * @return     1:Indicates that the bus is busy. 0:Indicates that the bus is free
@@ -360,6 +364,9 @@ void i2c_set_tx_dma_config(dma_chn_e chn);
  */
 void i2c_set_rx_dma_config(dma_chn_e chn);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

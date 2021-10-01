@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -53,8 +53,8 @@
 #define CMD_OTA_END							0xFF02	//client -> server
 
 #define CMD_OTA_START_EXT					0xFF03	//client -> server
-#define CMD_OTA_FW_VERSION_REQ				0xFF04
-#define CMD_OTA_FW_VERSION_RSP				0xFF05
+#define CMD_OTA_FW_VERSION_REQ				0xFF04	//client -> server
+#define CMD_OTA_FW_VERSION_RSP				0xFF05	//server -> client
 #define CMD_OTA_RESULT						0xFF06	//server -> client
 
 
@@ -168,9 +168,22 @@ typedef struct{
 }ota_pdu16_t;
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 unsigned long crc32_half_cal(unsigned long crc, unsigned char* input, unsigned long* table, int len);
 unsigned long crc32_cal(unsigned long crc, unsigned char* input, unsigned long* table, int len);
 
+#ifdef __cplusplus
+}
+#endif
 
+#if (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+	#define	bls_ota_registerStartCmdCb			blc_ota_registerOtaStartCmdCb
+	#define	bls_ota_registerVersionReqCb		blc_ota_registerOtaFirmwareVersionReqCb
+	#define	bls_ota_registerResultIndicateCb	blc_ota_registerOtaResultIndicationCb
+	#define bls_ota_setTimeout(tm_us)			blc_ota_setOtaProcessTimeout( (tm_us)/1000000 )
+#endif
 
 #endif /* OTA_H_ */

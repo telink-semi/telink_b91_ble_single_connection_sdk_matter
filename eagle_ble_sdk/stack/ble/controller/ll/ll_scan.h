@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -46,16 +46,20 @@
 #ifndef LL_SCAN_H_
 #define LL_SCAN_H_
 
-
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      for user to initialize scanning module
  * @param	   none
  * @return     none
  */
+#if (MCU_CORE_TYPE == MCU_CORE_9518)
 void 		blc_ll_initScanning_module(void);
+#elif (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+void 		blc_ll_initScanning_module(u8 *public_adr);
+#endif
 
 
 /**
@@ -111,9 +115,8 @@ ble_sts_t    blc_ll_addScanningInConnSlaveRole(void);
  */
 ble_sts_t    blc_ll_removeScanningFromConnSLaveRole(void);
 
-
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* LL_SCAN_H_ */

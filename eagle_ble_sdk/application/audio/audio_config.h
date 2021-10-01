@@ -47,7 +47,6 @@
 #include  "application/audio/audio_common.h"
 #include  "tl_common.h"
 
-
 #ifndef		TL_AUDIO_MODE
 #define		TL_AUDIO_MODE									AUDIO_DISABLE
 #endif

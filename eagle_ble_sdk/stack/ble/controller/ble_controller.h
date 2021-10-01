@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -62,14 +62,21 @@
 #include "stack/ble/controller/ll/ll_pm.h"
 #include "stack/ble/controller/ll/ll_scan.h"
 #include "stack/ble/controller/ll/ll_whitelist.h"
+#include "stack/ble/controller/ll/ll_resolvlist.h"
 #include "stack/ble/controller/ll/ll_conn/ll_conn.h"
 #include "stack/ble/controller/ll/ll_conn/ll_slave.h"
 #include "stack/ble/controller/ll/ll_conn/ll_conn_csa.h"
+
+#if(MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+#include "stack/ble/controller/ll/ll_init.h"
+#include "stack/ble/controller/ll/ll_conn/ll_master.h"
+#endif
 
 #include "stack/ble/controller/ll/ll_ext_adv.h"
 
 
 #include "phy/phy.h"
+#include "phy/phy_stack.h"
 #include "phy/phy_test.h"
 
 
@@ -79,7 +86,12 @@
 
 /*********************************************************/
 //Remove when file merge to SDK //
+#include "stack/ble/ble_stack.h"
+#include "stack/ble/ble_config.h"
+#include "stack/ble/trace.h"
 
+#include "stack/ble/controller/ll/ll_stack.h"
+#include "stack/ble/controller/ll/ll_conn/conn_stack.h"
 /*********************************************************/
 
 #endif /* BLE_H_ */

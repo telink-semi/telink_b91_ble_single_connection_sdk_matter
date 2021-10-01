@@ -48,6 +48,9 @@
 
 #if (FEATURE_TEST_MODE == TEST_AUDIO)
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief		user initialization when MCU power on or wake_up from deepSleep mode
@@ -101,6 +104,9 @@ void proc_keyboard (u8 e, u8 *p, int n);
  */
 void key_change_proc(void);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif  //end of (FEATURE_TEST_MODE == ...)
 #endif /* VENDOR_APP_H_ */

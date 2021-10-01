@@ -59,6 +59,7 @@
 #include "mspi_reg.h"
 #include "rf_reg.h"
 #include "trng_reg.h"
+#include "npe_reg.h"
 #include "pke_reg.h"
 #include "plic_reg.h"
 #include "uart_reg.h"
@@ -66,4 +67,5 @@
 #include "aes_reg.h"
 #include "adc_reg.h"
 #include "mdec_reg.h"
+#include "swire_reg.h"
 #endif

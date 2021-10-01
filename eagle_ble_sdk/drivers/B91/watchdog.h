@@ -48,6 +48,10 @@
 #include "analog.h"
 #include "gpio.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief     start watchdog.
  * @return    none
@@ -101,5 +105,9 @@ static inline void wd_set_interval_ms(unsigned int period_ms)
 	tmp_period_ms=period_ms*sys_clk.pclk*1000;
 	reg_wt_target=tmp_period_ms;
 }
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

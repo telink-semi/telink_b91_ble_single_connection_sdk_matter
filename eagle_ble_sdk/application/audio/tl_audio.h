@@ -49,8 +49,6 @@
 #include "tl_common.h"
 #include "audio_config.h"
 
-
-
 #if (TL_AUDIO_MODE & RCU_PROJECT)								//RCU
 #ifndef		TL_NOISE_SUPRESSION_ENABLE
 #define		TL_NOISE_SUPRESSION_ENABLE			0
@@ -125,6 +123,11 @@ static inline int noise_supression (s16 md) {
 }
 #endif
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void 	voice_iir_OOB(signed short * ps, signed short *pd, int* coef, int nsample,u8 shift);
 void 	voice_iir(signed short * ps, signed short *pd, int* coef, int nsample,u8 shift);
 void 	Audio_VolumeSet(unsigned char input_output_select,unsigned char volume_set_value);
@@ -143,4 +146,9 @@ void abuf_mic_dec ();
 void abuf_dec_usb ();
 
 #endif
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* TL_AUDIO_H_ */

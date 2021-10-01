@@ -43,12 +43,6 @@
  *          SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *******************************************************************************************************/
-/*
- * blt_led.h
- *
- *  Created on: 2016-1-29
- *      Author: Administrator
- */
 
 #ifndef BLT_LED_H_
 #define BLT_LED_H_
@@ -95,6 +89,10 @@ extern device_led_t device_led;
 
 #define  DEVICE_LED_BUSY	(device_led.repeatCount)
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief		This function is used to manage led tasks
  * @param[in]	none
@@ -132,7 +130,8 @@ static inline void device_led_process(void)
 #endif
 }
 
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* BLT_LED_H_ */

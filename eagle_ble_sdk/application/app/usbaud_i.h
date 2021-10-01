@@ -46,12 +46,10 @@
 
 #pragma once
 
-
 #include "drivers.h"
 #include "usbaud.h"
 #include "application/usbstd/AudioClassCommon.h"
 #include "application/usbstd/usb.h"
-
 
 #if 0
 static const USB_Descriptor_HIDReport_Datatype_t usbaud_report_desc[] = {
@@ -135,5 +133,3 @@ static inline u8* usbaud_get_report_desc(void) {
 static inline u16 usbaud_get_report_desc_size(void) {
 	return sizeof(usbaud_report_desc);
 }
-
-

@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -49,8 +49,8 @@
 #pragma once
 
 
-#include "common/types.h"
-#include "common/bit.h"
+#include "types.h"
+#include "bit.h"
 #include "common/utility.h"
 
 #include "vendor/common/user_config.h"
@@ -63,6 +63,8 @@
 
 #include <string.h>
 
+#include "common/usb_dbg/myudb.h"
+#include "common/usb_dbg/log_def_stack.h"
 
 #include "application/print/printf.h"
 

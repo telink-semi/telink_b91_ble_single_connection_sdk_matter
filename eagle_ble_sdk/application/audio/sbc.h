@@ -59,6 +59,10 @@ typedef unsigned short uint16_t;
 typedef unsigned char uint8_t;
 typedef signed int sbc_fixed_t;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 uint64_t mul64(uint64_t x, unsigned int y);
 uint64_t div64(uint64_t x, uint16_t y);
 uint64_t shift_left64(uint64_t x, uint8_t bits);
@@ -74,4 +78,9 @@ size_t sbc_get_codesize(int type);
 
 void msbc_init_ctx();
 void msbc_release_ctx();
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* SBC_H_ */

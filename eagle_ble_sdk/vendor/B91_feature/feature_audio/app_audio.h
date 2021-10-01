@@ -51,6 +51,10 @@
 #define APP_AUDIO_BT_CLOSE   0x00
 #define APP_AUDIO_BT_CONFIG  0x02
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void ui_enable_mic (int en);
 void voice_press_proc(void);
 void blc_checkConnParamUpdate(void);
@@ -59,4 +63,9 @@ int server2client_auido_proc(unsigned short connHandle,void* p);
 void audio_state_check(void);
 void voice_key_release(void);
 void voice_key_press(void);
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif

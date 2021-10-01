@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -141,13 +141,9 @@ typedef struct
 
 #define ADV_SET_PARAM_LENGTH				(sizeof(ll_ext_adv_t))   //sizeof(ll_ext_adv_t) =  ,  must 4 byte aligned
 
-
-
-
-
-
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      this function is used to initialize extended advertising module
@@ -283,8 +279,8 @@ void        blc_ll_setAuxAdvChnIdxByCustomers(u8 aux_chn);
  */
 void		blc_ll_setMaxAdvDelay_for_AdvEvent(u8 max_delay_ms);
 
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* LL_ADV_EXT_H_ */

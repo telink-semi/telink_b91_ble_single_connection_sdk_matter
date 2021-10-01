@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -46,10 +46,9 @@
 #ifndef GATT_H_
 #define GATT_H_
 
-
-
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief	   This function is used to notify a client of the value of a Characteristic Value from a server.
@@ -163,5 +162,8 @@ ble_sts_t 	blc_gatt_pushReadBlobRequest (u16 connHandle, u16 attHandle, u16 offs
  */
 ble_sts_t 	blc_gatt_pushReadByGroupTypeRequest (u16 connHandle, u16 start_attHandle, u16 end_attHandle, u8 *uuid, int uuid_len);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* GATT_H_ */

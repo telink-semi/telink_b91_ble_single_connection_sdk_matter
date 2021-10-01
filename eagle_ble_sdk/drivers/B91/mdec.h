@@ -48,6 +48,10 @@
 #include "analog.h"
 #include "reg_include/mdec_reg.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief		This function servers to reset the MDEC module.When the system is wakeup by MDEC, you should
  * 			  	to reset the MDEC module to clear the flag bit of MDEC wakeup.
@@ -96,5 +100,6 @@ void mdec_init(mdec_pin_e pin);
  */
 unsigned char mdec_read_dat(unsigned char *dat);
 
-
-
+#ifdef __cplusplus
+}
+#endif

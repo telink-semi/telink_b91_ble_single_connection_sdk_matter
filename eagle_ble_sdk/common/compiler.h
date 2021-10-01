@@ -69,9 +69,7 @@
 #define _attribute_no_inline_   		__attribute__((noinline))
 #define _inline_ 						inline
 #define _attribute_data_dlm_   			_attribute_session_(".dlm_data")//dlm:Data Local Memory
-#ifndef	BLC_PM_EN
-#define	BLC_PM_EN							1
-#endif
+
 
 #ifndef	BLC_PM_DEEP_RETENTION_MODE_EN
 #define	BLC_PM_DEEP_RETENTION_MODE_EN		1

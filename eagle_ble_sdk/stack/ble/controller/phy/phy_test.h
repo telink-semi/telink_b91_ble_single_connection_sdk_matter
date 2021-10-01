@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -78,12 +78,9 @@
 #define 		BLC_PHYTEST_DISABLE						0
 #define 		BLC_PHYTEST_ENABLE						1
 
-
-
-
-
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /**
@@ -110,28 +107,48 @@ ble_sts_t blc_phy_setPhyTestEnable (u8 en);
 bool 	  blc_phy_isPhyTestEnable(void);
 
 
-/**
- * @brief      uart RX data process for PHY test 2 wire UART mode
- * @param      none
- * @return     always 0
- */
-int 	 blc_phyTest_2wire_rxUartCb (void);
+#if (MCU_CORE_TYPE == MCU_CORE_9518)
+	/**
+	 * @brief      uart RX data process for PHY test 2 wire UART mode
+	 * @param      none
+	 * @return     always 0
+	 */
+	int 	 blc_phyTest_2wire_rxUartCb (void);
 
 
-/**
- * @brief      uart TX data process for PHY test 2 wire UART mode
- * @param      none
- * @return     always 0
- */
-int 	 blc_phyTest_2wire_txUartCb (void);
+	/**
+	 * @brief      uart TX data process for PHY test 2 wire UART mode
+	 * @param      none
+	 * @return     always 0
+	 */
+	int 	 blc_phyTest_2wire_txUartCb (void);
 
 
-/**
- * @brief      uart RX data process for PHY test hci UART mode
- * @param      none
- * @return     always 0
- */
-int blc_phyTest_hci_rxUartCb (void);
+	/**
+	 * @brief      uart RX data process for PHY test hci UART mode
+	 * @param      none
+	 * @return     always 0
+	 */
+	int blc_phyTest_hci_rxUartCb (void);
+#elif (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+	/**
+	 * @brief      uart RX data process for PHY test 2 wire UART mode
+	 * @param      none
+	 * @return     always 0
+	 */
+	int 	 phy_test_2_wire_rx_from_uart (void);
 
+
+	/**
+	 * @brief      uart TX data process for PHY test 2 wire UART mode
+	 * @param      none
+	 * @return     always 0
+	 */
+	int 	 phy_test_2_wire_tx_to_uart (void);
+#endif
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* PHY_TEST_H_ */

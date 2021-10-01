@@ -412,6 +412,10 @@ typedef enum
 }codec_volt_supply_e;
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * 	@brief      This function serves to set the clock of i2s
  * 	@param[in]  step - the dividing factor of step.
@@ -905,4 +909,9 @@ void audio_codec_adc_power_down(void);
  * @return    none
  */
 void audio_codec_adc_power_on(void);
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif

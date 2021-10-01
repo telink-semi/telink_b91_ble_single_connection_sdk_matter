@@ -46,6 +46,10 @@
 #ifndef BLT_FW_SIGN_H_
 #define BLT_FW_SIGN_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief		This function is used to check digital signature of firmware
  * @param[in]	none
@@ -53,6 +57,9 @@
  */
 void blt_firmware_signature_check(void);
 
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* BLT_FW_SIGNATURE_H_ */

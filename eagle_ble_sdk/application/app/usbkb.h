@@ -51,12 +51,6 @@
 #include "tl_common.h"
 #include "drivers.h"
 
-/* Enable C linkage for C++ Compilers: */
-#if defined(__cplusplus)
-extern "C" {
-#endif
-
-
 #define DAT_TYPE_KB			1
 #define DAT_TYPE_MOUSE		2
 
@@ -77,6 +71,11 @@ typedef struct {
     u8 Reserved; /**< Reserved for OEM use, always set to 0. */
     u8 KeyCode[KEYBOARD_REPORT_KEY_MAX]; /**< Key codes of the currently pressed keys. */
 } usbkb_hid_report_t;
+
+/* Enable C linkage for C++ Compilers: */
+#if defined(__cplusplus)
+extern "C" {
+#endif
 
 int usbkb_hid_report_normal(u8 ctrl_key, u8 *keycode);
 

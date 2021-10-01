@@ -136,6 +136,11 @@ typedef struct{
 	unsigned char  flash_read_addr_line:1;	/**< 0:single line;  1:the same to dat_line_h */
 	unsigned char  flash_read_cmd_line:1; 	/**< 0:single line;  1:the same to dat_line_h */
 }flash_xip_config_t;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief     	This function serves to erase a page(256 bytes).
  * @param[in] 	addr	- the start address of the page needs to erase.
@@ -229,7 +234,7 @@ _attribute_text_sec_ void flash_release_deep_powerdown(void);
  * @param[in] 	buf		- store MID of flash
  * @return    	none.
  */
-_attribute_text_sec_ void flash_read_mid(unsigned char *buf);
+_attribute_text_sec_ unsigned int flash_read_mid(void);
 
 /**
  * @brief	  	This function serves to read UID of flash
@@ -286,3 +291,6 @@ _attribute_text_sec_ void flash_set_xip_config(flash_xip_config_t config);
  */
 _attribute_ram_code_sec_noinline_ void flash_send_cmd(unsigned char cmd);
 
+#ifdef __cplusplus
+}
+#endif

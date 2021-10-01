@@ -52,10 +52,10 @@
 #define  GPIO_IR_LEARN_IN	                 GPIO_PE1
 
 /************************************************************************************************
-* ¡¾define¡¿IR_LEARN_FREQUENCY_RANGE_MODE :														*
+* ï¿½ï¿½defineï¿½ï¿½IR_LEARN_FREQUENCY_RANGE_MODE :														*
 * Choose IR Learn frequency range that device supported											*
-* ¡¾define¡¿IR_LEARN_MAX_FREQUENCY: Max carrier frequency that device support to do IR learn		*
-* ¡¾define¡¿IR_LEARN_MIN_FREQUENCY: Min carrier frequency that device support to do IR learn		*
+* ï¿½ï¿½defineï¿½ï¿½IR_LEARN_MAX_FREQUENCY: Max carrier frequency that device support to do IR learn		*
+* ï¿½ï¿½defineï¿½ï¿½IR_LEARN_MIN_FREQUENCY: Min carrier frequency that device support to do IR learn		*
 ************************************************************************************************/
 
 #define			IR_LEARN_MAX_FREQUENCY			40000
@@ -67,7 +67,7 @@
 #define			IR_LEARN_CARRIER_MAX_HIGH_TICK	IR_LEARN_CARRIER_MAX_CYCLE/3
 
 /************************************************************************************************
-* ¡¾define¡¿PARAMETER SETTING :																	*
+* ï¿½ï¿½defineï¿½ï¿½PARAMETER SETTING :																	*
 * Related parameter setting to change IR learn result											*
 ************************************************************************************************/
 
@@ -131,6 +131,10 @@ typedef struct{
     unsigned int   data_num;
 }ir_send_dma_data_t;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void ir_learn_init(void);
 void ir_learn_start(void);
 void ir_learn_stop(void);
@@ -141,6 +145,10 @@ void ir_learn_send_init(void);
 void ir_learn_detect(void);
 void ir_learn_init(void);
 unsigned char get_ir_learn_state(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

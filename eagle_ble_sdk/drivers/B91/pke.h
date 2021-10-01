@@ -164,6 +164,10 @@ typedef enum{
 
 }pke_microcode_e;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief		This function serves to get pke status.
  * @param[in] 	status	- the interrupt status to be obtained.
@@ -457,6 +461,8 @@ unsigned char pke_ed25519_point_mul(edward_curve_t *curve, unsigned int *k, unsi
 unsigned char pke_ed25519_point_add(edward_curve_t *curve, unsigned int *P1x, unsigned int *P1y, unsigned int *P2x, unsigned int *P2y,
 					  unsigned int *Qx, unsigned int *Qy);
 
-
+#ifdef __cplusplus
+}
+#endif
 
 

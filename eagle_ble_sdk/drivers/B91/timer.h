@@ -103,6 +103,10 @@ typedef enum{
  *                                      global function prototype                                                     *
  *********************************************************************************************************************/
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * @brief    This function refer to get timer irq status.
  * @param[in] status - variable of enum to select the timer interrupt source.
@@ -241,6 +245,8 @@ void timer_gpio_init(timer_type_e type, gpio_pin_e pin, gpio_pol_e pol );
  */
 void timer_stop(timer_type_e type);
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* TIMER_H_ */

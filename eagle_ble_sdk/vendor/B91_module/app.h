@@ -46,6 +46,10 @@
 #ifndef VENDOR_APP_H_
 #define VENDOR_APP_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief		user initialization when MCU power on or wake_up from deepSleep mode
  * @param[in]	none
@@ -75,5 +79,9 @@ void main_loop (void);
  * @return      none
  */
 void user_init_battery_power_check(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* VENDOR_APP_H_ */

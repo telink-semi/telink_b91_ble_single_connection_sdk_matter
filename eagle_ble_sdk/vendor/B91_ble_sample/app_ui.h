@@ -53,6 +53,9 @@
 extern int 	key_not_released;
 extern	u8 	ota_is_working;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #if (BLE_OTA_SERVER_ENABLE)
 /**
@@ -104,9 +107,8 @@ void proc_button (u8 e, u8 *p, int n);
 
 #endif
 
-
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* VENDOR_B91_BLE_SAMPLE_APP_UI_H_ */

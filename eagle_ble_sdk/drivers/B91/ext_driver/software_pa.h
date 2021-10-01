@@ -75,8 +75,14 @@ typedef void (*rf_pa_callback_t)(int type);
 extern rf_pa_callback_t  blc_rf_pa_cb;
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 void rf_pa_init(void);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* BLT_PA_H_ */

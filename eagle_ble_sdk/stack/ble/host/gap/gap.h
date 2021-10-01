@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -92,9 +92,9 @@
 
 #define GAP_APPEARE_UNKNOWN                     0x0000 //!< Unknown
 
-
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      this  function is used to initialize GAP Peripheral
@@ -103,14 +103,6 @@
  */
 void 		blc_gap_peripheral_init(void);
 
-
-
-
-
-
-
-
-
-
-
-
+#ifdef __cplusplus
+}
+#endif

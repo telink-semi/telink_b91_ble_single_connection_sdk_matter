@@ -277,6 +277,9 @@ extern const rf_power_level_e rf_power_Level_list[30];
  *                                         RF function declaration                                                    *
  *********************************************************************************************************************/
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief   	This function serves to judge the statue of  RF receive.
@@ -1049,6 +1052,13 @@ _attribute_ram_code_sec_noinline_ void rf_start_brx  (void* addr, unsigned int t
  */
 _attribute_ram_code_sec_noinline_ void rf_start_btx (void* addr, unsigned int tick);
 
+void rf_baseband_reset(void);
+void rf_radio_reset(void);
+void rf_reset_dma(void);
 
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

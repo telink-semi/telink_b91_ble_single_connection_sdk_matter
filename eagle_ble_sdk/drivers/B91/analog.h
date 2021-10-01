@@ -80,6 +80,10 @@
  *                                      global function prototype                                                     *
  *********************************************************************************************************************/
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief      This function serves to analog register read by byte.
  * @param[in]  addr - address need to be read.
@@ -205,3 +209,7 @@ void analog_read_buff_dma(dma_chn_e chn, unsigned char addr, unsigned char *pdat
  * @return     none.
  */
 void analog_write_addr_data_dma(dma_chn_e chn, void *pdat, int len);
+
+#ifdef __cplusplus
+}
+#endif

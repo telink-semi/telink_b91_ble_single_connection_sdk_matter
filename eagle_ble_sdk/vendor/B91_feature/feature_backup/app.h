@@ -49,6 +49,10 @@
 #if (FEATURE_TEST_MODE == TEST_FEATURE_BACKUP)
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief		user initialization when MCU power on or wake_up from deepSleep mode
  * @param[in]	none
@@ -94,6 +98,9 @@ void proc_keyboard (u8 e, u8 *p, int n);
 
 #endif
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif  //end of (FEATURE_TEST_MODE == ...)
 #endif /* VENDOR_APP_H_ */

@@ -140,6 +140,10 @@ void bls_pm_registerFuncBeforeSuspend (suspend_handler_t func );
 #define SYS_DEEP_ANA_REG 					PM_ANA_REG_POWER_ON_CLR_BUF0
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief      This function serves to set the working mode of MCU based on 32k crystal,e.g. suspend mode, deepsleep mode, deepsleep with SRAM retention mode and shutdown mode.
  * @param[in]  sleep_mode - sleep mode type select.
@@ -274,5 +278,8 @@ extern  unsigned int 			g_pm_tick_32k_cur;
 extern  unsigned char       	g_pm_long_suspend;
 extern  unsigned int 			g_pm_multi_addr;
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* DRIVERS_B91_DRIVER_EXT_EXT_PM_H_ */

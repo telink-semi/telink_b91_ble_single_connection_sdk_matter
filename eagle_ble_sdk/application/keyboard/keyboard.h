@@ -46,6 +46,10 @@
 
 #pragma once
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "drivers.h"
 
 #define KB_RETURN_KEY_MAX	6
@@ -133,3 +137,7 @@ static inline unsigned int kb_scan_key (int numlock_status, int read_key) {
 		return 0;
 	}
 }
+
+#ifdef __cplusplus
+}
+#endif

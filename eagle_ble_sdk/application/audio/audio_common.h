@@ -46,6 +46,10 @@
 #ifndef AUDIO_COMMON_H_
 #define AUDIO_COMMON_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define		TL_AUDIO_MASK_SBC_MODE							(0x00000001)
 #define		TL_AUDIO_MASK_MSBC_MODE							(0x00000002)
 #define		TL_AUDIO_MASK_ADPCM_MODE						(0x00000004)
@@ -99,9 +103,8 @@
 
 #define		TL_AUDIO_DONGLE_OPUS_GATT_AMAZON				(DONGLE_PROJECT | TL_AUDIO_MASK_OPUS_MODE | TL_AUDIO_MASK_GATT_SERVICE_AMAZON_CHANNEL)
 
-
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* AUDIO_COMMON_H_ */

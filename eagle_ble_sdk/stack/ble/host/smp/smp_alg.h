@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -43,12 +43,13 @@
  *          SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *******************************************************************************************************/
-
 #ifndef SMP_ALG_H_
 #define SMP_ALG_H_
 
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief   	This function is used to generate the confirm values
@@ -164,6 +165,9 @@ void 			blt_smp_alg_h7 (unsigned char *r, unsigned char salt[16], unsigned char 
  */
 void 			blt_smp_alg_h8 (unsigned char *r, unsigned char k[16], unsigned char s[16], unsigned char keyId[4]);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* SMP_ALG_H_ */
 

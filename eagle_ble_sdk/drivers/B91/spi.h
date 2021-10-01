@@ -349,6 +349,9 @@ typedef struct{
 	pspi_miso_io1_pin_def_e pspi_miso_io1_pin;
 }pspi_pin_config_t;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief    This function reset HSPI module.
@@ -1305,6 +1308,10 @@ void hspi_master_read_xip(unsigned char cmd, unsigned int addr_offset, unsigned 
  * @return   	none
  */
 void hspi_master_write_xip_cmd_data(unsigned char cmd, unsigned int addr_offset, unsigned char data_in, spi_wr_tans_mode_e wr_mode);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

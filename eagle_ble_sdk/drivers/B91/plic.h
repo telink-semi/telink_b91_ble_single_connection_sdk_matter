@@ -144,6 +144,10 @@ typedef enum{
 }irq_priority_e;
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief    This function serves to set plic feature.
  * @param[in]   feature - preemptive priority interrupt feature and the vector mode.
@@ -268,5 +272,8 @@ _attribute_ram_code_sec_noinline_ unsigned int plic_enter_critical_sec(unsigned 
 */
 _attribute_ram_code_sec_noinline_   void  plic_exit_critical_sec(unsigned char preempt_en ,unsigned int r);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif

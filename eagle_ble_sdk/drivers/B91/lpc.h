@@ -90,6 +90,10 @@ typedef enum{
 	LPC_SCALING_PER100 = 3,
 }lpc_scaling_e;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief		This function servers to powers down low power comparator.
  * @return		none.
@@ -145,4 +149,7 @@ static inline unsigned char lpc_get_result(void)
  */
 void lpc_set_input_ref(lpc_mode_e mode, lpc_reference_e ref);
 
+#ifdef __cplusplus
+}
+#endif
 

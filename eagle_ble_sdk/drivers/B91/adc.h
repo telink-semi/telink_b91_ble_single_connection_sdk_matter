@@ -170,6 +170,11 @@ enum{
 	ADC_MAX_STATE_NUM  = 0x02,
 };
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief      This function open sar_adc power.
  * @return   none.
@@ -425,3 +430,7 @@ unsigned short adc_calculate_voltage(unsigned short adc_code);
  * 			Temp =  564 - ((adc_code * 819)>>13),when Vref = 1.2V, pre_scale = 1.
  */
 unsigned short adc_calculate_temperature(unsigned short adc_code);
+
+#ifdef __cplusplus
+}
+#endif

@@ -215,6 +215,11 @@ typedef enum{
 /**********************************************************************************************************************
  *                                      global function prototype                                                     *
  *********************************************************************************************************************/
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief     This function serves to get the rxfifo cnt.
  * @param[in] uart_num - UART0/UART1.
@@ -656,5 +661,9 @@ static inline void uart_rtx_en(uart_num_e chn)
 {
 	reg_uart_rx_timeout1(chn)|=FLD_UART_P7816_EN;
 }
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif	/* UART_H_ */

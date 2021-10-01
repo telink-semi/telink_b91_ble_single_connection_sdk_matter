@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -43,15 +43,14 @@
  *          SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *******************************************************************************************************/
+#include "conn_stack.h"
+
 #ifndef LL_SLAVE_H_
 #define LL_SLAVE_H_
 
-
-
-
-
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      for user to initialize ACL connection slave role.
@@ -96,7 +95,13 @@ u16			bls_ll_getConnectionLatency(void);
  */
 u16			bls_ll_getConnectionTimeout(void);
 
-
+/**
+ * @brief     for user to send LL_VERSION_IND.
+ * @param     connHandle: BLS_CONN_HANDLE indicate slave role;
+ * @return    status, 0x00 : succeed
+ * 					  other: failed
+ */
+ble_sts_t	bls_ll_readRemoteVersion(u16 connHandle);
 
 /**
  * @brief      used to set telink defined event mask for BLE module only.
@@ -107,11 +112,18 @@ u16			bls_ll_getConnectionTimeout(void);
 ble_sts_t 	bls_hci_mod_setEventMask_cmd(u32 evtMask);
 
 
+#if(MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+	int			bls_ll_requestConnBrxEventDisable(void);
+	void		bls_ll_disableConnBrxEvent(void);
+	void		bls_ll_restoreConnBrxEvent(void);
+#endif
 
+#if (MCU_CORE_TYPE == MCU_CORE_9518)
+	#define blc_ll_disconnect(conn, reason)     	bls_ll_terminateConnection(reason)
+#endif
 
-
-#define blc_ll_disconnect(conn, reason)     	bls_ll_terminateConnection(reason)
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* LL_SLAVE_H_ */

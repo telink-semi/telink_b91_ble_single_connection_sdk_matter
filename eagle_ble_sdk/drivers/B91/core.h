@@ -4,9 +4,9 @@
  * @brief	This is the header file for B91
  *
  * @author	Driver Group
- * @date	2019
+ * @date	2021
  *
- * @par     Copyright (c) 2019, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
+ * @par     Copyright (c) 2021, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
  *
  *          Redistribution and use in source and binary forms, with or without
@@ -45,21 +45,27 @@
  *******************************************************************************************************/
 #ifndef CORE_H
 #define CORE_H
-#include "nds_intrinsic.h"
 #include "sys.h"
 
-#define  read_csr(reg)		         __nds__csrr(reg)
-#define  write_csr(reg, val)	      __nds__csrw(val, reg)
-#define  swap_csr(reg, val)	          __nds__csrrw(val, reg)
-#define set_csr(reg, bit)	         __nds__csrrs(bit, reg)
-#define clear_csr(reg, bit)	         __nds__csrrc(bit, reg)
+// #define NDS_MXSTATUS            0x0 //TBD
+#define NDS_MEPC                0x341
+#define NDS_MIE                 0x304
+#define NDS_MILMB               0x7C0
+#define NDS_MDLMB               0x7C1
+#define NDS_MSTATUS             0x300
+
+#define read_csr(var, csr)      __asm__ volatile ("csrr %0, %1" : "=r" (var) : "i" (csr))
+#define write_csr(csr, val)     __asm__ volatile ("csrw %0, %1" :: "i" (csr), "r" (val))
+#define set_csr(csr, bit)       __asm__ volatile ("csrs %0, %1" :: "i" (csr), "r" (bit))
+#define clear_csr(csr, bit)     __asm__ volatile ("csrc %0, %1" :: "i" (csr), "r" (bit))
 
 /*
  * Inline nested interrupt entry/exit macros
  */
 /* Svae/Restore macro */
-#define save_csr(r)             long __##r = read_csr(r);
-#define restore_csr(r)           write_csr(r, __##r);
+#define save_csr(r)             long __##r;          \
+                                read_csr(__##r,r);
+#define restore_csr(r)          write_csr(r, __##r);
 /* Support PowerBrake (Performance Throttling) feature */
 
 
@@ -80,8 +86,6 @@
 	 restore_csr(NDS_MEPC)                           \
 	 restore_mxstatus()
 
-#define fence_iorw	      	__nds__fence(FENCE_IORW,FENCE_IORW)
-
 typedef enum{
 	FLD_FEATURE_PREEMPT_PRIORITY_INT_EN = BIT(0),
 	FLD_FEATURE_VECTOR_MODE_EN 			= BIT(1),
@@ -96,7 +100,8 @@ feature_e;
  */
 static inline unsigned int core_interrupt_disable(void){
 
-	unsigned int r = read_csr (NDS_MIE);
+	unsigned int r;
+	read_csr (r, NDS_MIE);
 	clear_csr(NDS_MIE, BIT(3)| BIT(7)| BIT(11));
 	return r;
 }
