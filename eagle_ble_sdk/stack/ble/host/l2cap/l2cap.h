@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -49,10 +49,11 @@
 
 
 
+#define	L2CAP_RX_BUFF_LEN_MAX			  (256)
 //header(2)+l2cap_len(2)+cid(2)+Attribute_data[ATT_MTU]
 #define	ATT_RX_MTU_SIZE_MAX		  		  (250) //dft ATT_MTU_MAX: 250
 //l2cap buffer max: header(2)+l2cap_len(2)+cid(2)+ATT_MTU_MAX(250).
-#define	L2CAP_RX_BUFF_LEN_MAX			  (256)
+
 
 
 

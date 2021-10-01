@@ -624,7 +624,7 @@ _attribute_no_inline_ void main_loop (void)
 
 
 	#if (UI_KEYBOARD_ENABLE)
-			proc_keyboard (0,0, 0);
+			proc_keyboard (0, 0, 0);
 	#elif (UI_BUTTON_ENABLE)
 			// process button 1 second later after power on, to avoid power unstable
 			if(!button_detect_en && clock_time_exceed(0, 1000000)){

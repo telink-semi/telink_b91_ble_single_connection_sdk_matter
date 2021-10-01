@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -46,6 +46,18 @@
 #ifndef SMP_STORAGE_H_
 #define SMP_STORAGE_H_
 
+
+
+
+#if (LL_FEATURE_ENABLE_LL_PRIVACY)
+/*
+ *  Address resolution is not supported by default. After pairing and binding, we need to obtain the central Address Resolution
+ *  feature value of the opposite end to determine whether the opposite end supports the address resolution function, and write
+ *  the result to smp_bonding_flg. Currently, we leave it to the user to obtain this feature.
+ */
+#define 	IS_PEER_ADDR_RES_SUPPORT(peerAddrResSuppFlg)	(!(peerAddrResSuppFlg &1))
+
+#endif
 
 
 
@@ -130,6 +142,9 @@ void		bls_smp_setIndexUpdateMethod(index_updateMethod_t method);
  */
 void		bls_smp_eraseAllParingInformation(void);
 
+#if (LL_FEATURE_ENABLE_LL_PRIVACY)
+void		blc_smp_setPeerAddrResSupportFlg(u32 flash_addr, u8 support);
+#endif
 
 
 #endif /* SMP_STORAGE_H_ */

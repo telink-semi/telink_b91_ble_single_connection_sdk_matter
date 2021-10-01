@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -49,8 +49,7 @@
 
 #include "tl_common.h"
 #include "stack/ble/ble_common.h"
-
-
+#include "stack/ble/controller/ll/ll_stack.h"
 
 /**
  * @brief	BLE link layer state
@@ -95,7 +94,7 @@ typedef int (*blc_main_loop_phyTest_callback_t)(void);
 #define			BLT_EV_FLAG_CONN_PARA_UPDATE					13
 #define			BLT_EV_FLAG_SUSPEND_ENTER						14
 #define			BLT_EV_FLAG_SUSPEND_EXIT						15
-
+#define			BLT_EV_FLAG_VERSION_IND_REV						16
 
 typedef struct {
 	u16		connEffectiveMaxRxOctets;
@@ -115,6 +114,9 @@ typedef struct {
 
 extern _attribute_aligned_(4) ll_data_extension_t  bltData;
 
+#if (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+extern my_fifo_t		hci_tx_fifo;
+#endif
 /**
  * @brief	This function is used to obtain the effective maximum TX data length
  * @param	none
@@ -130,6 +132,7 @@ static inline u8 blc_ll_get_connEffectiveMaxTxOctets(void)
 }
 
 
+#if (MCU_CORE_TYPE == MCU_CORE_9518)
 /**
  * @brief	This function is used to obtain the effective maximum RX data length
  * @param	none
@@ -143,7 +146,7 @@ static inline u8 blc_ll_get_connEffectiveMaxRxOctets(void)
 		return 27;
 	#endif
 }
-
+#endif
 
 /**
  * @brief	irq_handler for BLE stack, process system tick interrupt and RF interrupt
@@ -210,7 +213,7 @@ ble_sts_t 	blc_ll_readBDAddr(u8 *addr);
 /**
  * @brief      this function is used to get LE stack current state
  * @param[in]  none.
- * @return     blt_state:
+ * @return     BLE link layer state:
  * 					BLS_LINK_STATE_IDLE
  * 					BLS_LINK_STATE_ADV
  * 					BLS_LINK_STATE_SCAN
@@ -226,12 +229,17 @@ u8 			blc_ll_getCurrentState(void);
  */
 u8 			blc_ll_getLatestAvgRSSI(void);
 
+#if (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+u16   		blc_ll_setInitTxDataLength (u16 maxTxOct);   //core4.2 long data packet
+#endif
+
 /**
  * @brief      this function is used to pend Controller event
  * @param[in]  none.
  * @return     blc_tlkEvent_pending
  */
 bool		blc_ll_isControllerEventPending(void);
+
 
 /**
  * @brief      this function is used to get TX FIFO Number of current state
@@ -240,6 +248,11 @@ bool		blc_ll_isControllerEventPending(void);
  */
 u8  		blc_ll_getTxFifoNumber (void);
 
+ble_sts_t 	blt_ll_exchangeDataLength (u8 opcode, u16 maxTxOct);   ///core4.2 data extension
+
+#if (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+#define 	blc_ll_exchangeDataLength	blt_ll_exchangeDataLength  ///Compatible with previous versions
+#endif
 
 
 /**
@@ -252,6 +265,18 @@ void		bls_app_registerEventCallback (u8 e, blt_event_callback_t p);
 
 
 
+
+
+
+
+bool 		blc_ll_isBrxBusy (void);
+
+
+
+void  blc_ll_set_CustomedAdvScanAccessCode(u32 accss_code);
+
+
+#if (MCU_CORE_TYPE == MCU_CORE_9518)
 /**
  * @brief      this function is used check if any controller buffer initialized by application incorrect.
  * 			   attention: this function must be called at the end of BLE LinkLayer Initialization.
@@ -260,7 +285,7 @@ void		bls_app_registerEventCallback (u8 e, blt_event_callback_t p);
  * 					   other: buffer error code
  */
 ble_sts_t	blc_controller_check_appBufferInitialization(void);
-
+#endif
 
 
 

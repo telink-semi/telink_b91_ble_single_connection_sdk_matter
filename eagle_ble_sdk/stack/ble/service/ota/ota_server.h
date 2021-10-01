@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -81,14 +81,26 @@ void blc_ota_initOtaServer_module(void);
 
 
 
+#if (MCU_CORE_TYPE == MCU_CORE_9518)
+	/**
+	 * @brief      This function is used to set OTA new firmware storage address on Flash.
+	 * @param[in]  new_fw_addr - new firmware storage address, can only choose from multiple boot address
+	 * 							 supported by MCU
+	 * @return     Status - 0x00: command succeeded; 0x01-0xFF: command failed
+	 */
+	ble_sts_t blc_ota_setNewFirmwwareStorageAddress(multi_boot_addr_e new_fw_addr);
 
-/**
- * @brief      This function is used to set OTA new firmware storage address on Flash.
- * @param[in]  new_fw_addr - new firmware storage address, can only choose from multiple boot address
- * 							 supported by MCU
- * @return     Status - 0x00: command succeeded; 0x01-0xFF: command failed
- */
-ble_sts_t blc_ota_setNewFirmwwareStorageAddress(multi_boot_addr_e new_fw_addr);
+#elif (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+	/**
+	 * @brief      This function is used to set OTA new firmware storage address on Flash.
+	 * @param[in]  firmware_size_k - firmware maximum size unit: K Byte; must be 4K aligned
+	 * @param[in]  boot_addr - new firmware storage address, can only choose from multiple boot address
+	 * 							 supported by MCU
+	 * @return     Status - 0x00: command succeeded; 0x01-0xFF: command failed
+	 */
+	ble_sts_t bls_ota_set_fwSize_and_fwBootAddr(int firmware_size_k, multi_boot_addr_e boot_addr);
+
+#endif
 
 
 
@@ -166,13 +178,19 @@ ble_sts_t blc_ota_setOtaDataPacketTimeout(int timeout_second);
 
 
 
+#if (MCU_CORE_TYPE == MCU_CORE_9518)
+	extern int otaWrite(u16 connHandle, void * p);
+#elif (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+	extern int otaWrite(void * p);
+#endif
 
-extern int otaWrite(u16 connHandle, void * p);
 
 
-
-
-
+/**
+ * @brief      This function is used to erase flash area which will store new firmware.
+ * @param      none
+ * @return     none
+ */
 void bls_ota_clearNewFwDataArea(void);
 
 

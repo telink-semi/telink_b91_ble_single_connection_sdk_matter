@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -43,8 +43,6 @@
  *          SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *******************************************************************************************************/
-
-
 #ifndef LL_ADV_H_
 #define LL_ADV_H_
 
@@ -58,8 +56,11 @@
  * @param[in]  *public_adr -  public address pointer
  * @return     none
  */
+#if (MCU_CORE_TYPE == MCU_CORE_9518)
 void 		blc_ll_initAdvertising_module(void);
-
+#elif (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+void 		blc_ll_initAdvertising_module(u8 *public_adr);
+#endif
 
 /**
  * @brief	   set the data used in advertising packets that have a data field.
@@ -131,16 +132,25 @@ ble_sts_t   bls_ll_setAdvDuration (u32 duration_us, u8 duration_en);
  */
 void 		blc_ll_setAdvCustomedChannel (u8 chn0, u8 chn1, u8 chn2);
 
-
-extern u8 blc_continue_adv_en;//default stop sending legacy advertising packets when receiving scan request in the current adv interval.
 /**
- * @brief      this function is used to set whether to continue sending legacy advertising packets when receiving scan request in the current adv interval.
+ * @brief      this function is used to set whether to continue sending broadcast packets when receiving scan request in the current adv interval.
  * @param[in]  enable - enable:continue sending broadcast packets when receiving scan request.
  * @return     none.
  */
-static inline void bls_ll_continue_adv_after_scan_req(u8 enable){
-	blc_continue_adv_en = enable;
-}
+void bls_ll_continue_adv_after_scan_req(u8 enable);
+
+#if (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+u8 			blt_set_adv_direct_init_addrtype(u8* cmdPara);
+ble_sts_t   bls_ll_setAdvType(u8 advType);
+ble_sts_t 	blt_set_adv_addrtype(u8* cmdPara);
+#endif
+
+#if(BLT_ADV_IN_CONN_SLAVE_EN)
+ble_sts_t   blc_ll_addAdvertisingInConnSlaveRole(void);
+ble_sts_t   blc_ll_removeAdvertisingFromConnSLaveRole(void);
+ble_sts_t 	blc_ll_setAdvParamInConnSlaveRole( u8 		  *adv_data,  u8              advData_len, u8 *scanRsp_data,  u8 scanRspData_len,
+											   adv_type_t  advType,   own_addr_type_t ownAddrType, u8 adv_channelMap, adv_fp_type_t advFilterPolicy);
+#endif
 
 
 #endif /* LL_ADV_H_ */

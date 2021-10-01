@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -55,7 +55,11 @@
  * @param	   none
  * @return     none
  */
+#if (MCU_CORE_TYPE == MCU_CORE_9518)
 void 		blc_ll_initScanning_module(void);
+#elif (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+void 		blc_ll_initScanning_module(u8 *public_adr);
+#endif
 
 
 /**

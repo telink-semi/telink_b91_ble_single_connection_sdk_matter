@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -49,6 +49,51 @@
 #include "drivers.h"
 #include "tl_common.h"
 
+#if(MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+	#define  MAX_DEV_NAME_LEN 				18
+
+	#ifndef DEV_NAME
+	#define DEV_NAME                        "tModule"
+	#endif
+#endif
+
+
+#if (MCU_CORE_TYPE == MCU_CORE_825x)
+	#define	FIX_HW_CRC24_EN									1
+	#define HW_ECDH_EN                                      0
+#elif (MCU_CORE_TYPE == MCU_CORE_827x)
+	#define	FIX_HW_CRC24_EN									0
+	#define HW_ECDH_EN                                      1
+#elif (MCU_CORE_TYPE == MCU_CORE_9518)
+	#define	FIX_HW_CRC24_EN									0
+	#define HW_ECDH_EN                                      1
+	#define BLT_CONN_MASTER_EN								0
+	#define BLT_SCAN_EN										0
+	#define BLT_ADV_IN_CONN_SLAVE_EN						0
+	#define BLT_SCAN_IN_CONN_SLAVE_EN						0
+#else
+	#error "unsupported mcu type !"
+#endif
+
+
+
+///////////////////  Feature ////////////////////////////
+#ifndef			BLT_CONN_MASTER_EN
+#define			BLT_CONN_MASTER_EN								1
+#endif
+
+#ifndef			BLT_SCAN_EN
+#define			BLT_SCAN_EN										1
+#endif
+
+#ifndef			BLT_ADV_IN_CONN_SLAVE_EN
+#define			BLT_ADV_IN_CONN_SLAVE_EN						1
+#endif
+
+#ifndef			BLT_SCAN_IN_CONN_SLAVE_EN
+#define			BLT_SCAN_IN_CONN_SLAVE_EN						1
+#endif
+
 
 
 #ifndef			BIS_IN_BIG_NUM_MAX
@@ -89,9 +134,6 @@
 
 
 
-#define	BLS_BLE_RF_IRQ_TIMING_EXTREMELY_SHORT_EN			0
-
-
 
 //conn param update/map update
 #ifndef	BLS_PROC_MASTER_UPDATE_REQ_IN_IRQ_ENABLE
@@ -103,6 +145,13 @@
 #define LE_AUTHENTICATED_PAYLOAD_TIMEOUT_SUPPORT_EN			0
 #endif
 
+
+
+
+
+#ifndef DEEP_RET_ENTRY_CONDITIONS_OPTIMIZATION_EN
+#define	DEEP_RET_ENTRY_CONDITIONS_OPTIMIZATION_EN			0
+#endif
 
 
 #ifndef HOST_CONTROLLER_DATA_FLOW_IMPROVE_EN
@@ -136,6 +185,30 @@
 #define LL_FEATURE_SUPPORT_CHANNEL_SELECTION_ALGORITHM2				1
 #endif
 
+
+
+
+//core_5.2 feature begin
+#ifndef LL_FEATURE_SUPPORT_CONNECTED_ISOCHRONOUS_STREAM_MASTER
+#define LL_FEATURE_SUPPORT_CONNECTED_ISOCHRONOUS_STREAM_MASTER		1
+#endif
+
+#ifndef LL_FEATURE_SUPPORT_CONNECTED_ISOCHRONOUS_STREAM_SLAVE
+#define LL_FEATURE_SUPPORT_CONNECTED_ISOCHRONOUS_STREAM_SLAVE		1
+#endif
+
+#ifndef LL_FEATURE_SUPPORT_ISOCHRONOUS_BROADCASTER
+#define LL_FEATURE_SUPPORT_ISOCHRONOUS_BROADCASTER					1
+#endif
+
+#ifndef LL_FEATURE_SUPPORT_SYNCHRONIZED_RECEIVER
+#define LL_FEATURE_SUPPORT_SYNCHRONIZED_RECEIVER					1
+#endif
+
+#ifndef LL_FEATURE_SUPPORT_ISOCHRONOUS_CHANNELS
+#define LL_FEATURE_SUPPORT_ISOCHRONOUS_CHANNELS						1
+#endif
+//core_5.2 feature end
 
 
 
@@ -256,6 +329,3 @@
 #define 	DEBUG_PAIRING_ENCRYPTION		0
 #endif
 
-
-
-#define PUYA_FLASH_JUDGE_EN					0

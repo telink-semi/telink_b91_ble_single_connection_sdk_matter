@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -102,8 +102,12 @@
 
 
 
-//typedef int (*att_readwrite_callback_t)(void* p);
-typedef int (*att_readwrite_callback_t)(u16 connHandle, void* p);
+
+#if (MCU_CORE_TYPE == MCU_CORE_9518)
+	typedef int (*att_readwrite_callback_t)(u16 connHandle, void* p);
+#elif (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+	typedef int (*att_readwrite_callback_t)(void* p);
+#endif
 
 typedef struct attribute
 {
@@ -150,22 +154,7 @@ void		bls_att_setAttributeTable (u8 *p);
  */
 ble_sts_t	blc_att_setRxMtuSize(u16 mtu_size);
 
-/**
- * @brief	This function is used to request MTU size exchange
- * @param	connHandle - connect handle
- * @param	mtu_size - ATT MTU size
- * @return	0: success
- * 			other: fail
- */
-ble_sts_t	 blc_att_requestMtuSizeExchange (u16 connHandle, u16 mtu_size);
 
-/**
- * @brief	This function is used to response MTU size exchange
- * @param	mtu_size - ATT MTU size
- * @return	0: success
- * 			other: fail
- */
-ble_sts_t	 blc_att_responseMtuSizeExchange (u16 connHandle, u16 mtu_size);
 
 /**
  * @brief	This function is used to set prepare write buffer
@@ -174,3 +163,80 @@ ble_sts_t	 blc_att_responseMtuSizeExchange (u16 connHandle, u16 mtu_size);
  * @return	none.
  */
 void  		blc_att_setPrepareWriteBuffer(u8 *p, u16 len);
+
+/**
+ * @brief	This function is used to request MTU size exchange
+ * @param	connHandle - connect handle
+ * @param	mtu_size - ATT MTU size
+ * @return	0: success
+ * 			other: fail
+ */
+//Attention: this API hide in stack, user no need use !!!
+ble_sts_t	 blc_att_requestMtuSizeExchange (u16 connHandle, u16 mtu_size);
+
+/**
+ * @brief	This function is used to set effective ATT MTU size
+ * @param	connHandle - connect handle
+ * @param	effective_mtu - bltAtt.effective_MTU
+ * @return	none.
+ */
+void  		blt_att_setEffectiveMtuSize(u16 connHandle, u8 effective_mtu);
+
+/**
+ * @brief	This function is used to reset effective ATT MTU size
+ * @param	connHandle - connect handle
+ * @return	none.
+ */
+void  		blt_att_resetEffectiveMtuSize(u16 connHandle);
+
+/**
+ * @brief	This function is used to reset RX MTU size
+ * @param	mtu_size - ATT MTU size
+ * @return	0: success
+ * 			other: fail
+ */
+void  		blt_att_resetRxMtuSize(u16 connHandle);
+
+/**
+ * @brief   This function is used to get effective MTU size.
+ * @param	connHandle - connect handle
+ * @return  effective MTU value.
+ */
+u16  blc_att_getEffectiveMtuSize(u16 connHandle);
+
+
+#if(MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+/**
+ * @brief      set device name
+ * @param[in]  p - the point of name
+ * @param[in]  len - the length of name
+ * @return     BLE_SUCCESS
+ */
+ble_sts_t 	bls_att_setDeviceName(u8* pName,u8 len);  //only module/mesh/hci use
+
+ble_sts_t	blc_att_responseMtuSizeExchange (u16 connHandle, u16 mtu_size);
+ble_sts_t	bls_att_pushNotifyData (u16 attHandle, u8 *p, int len);
+ble_sts_t	bls_att_pushIndicateData (u16 attHandle, u8 *p, int len);
+
+		// 0x04: ATT_OP_FIND_INFO_REQ
+void 	att_req_find_info(u8 *dat, u16 start_attHandle, u16 end_attHandle);
+		// 0x06: ATT_OP_FIND_BY_TYPE_VALUE_REQ
+void 	att_req_find_by_type (u8 *dat, u16 start_attHandle, u16 end_attHandle, u8 *uuid, u8* attr_value, int len);
+		// 0x08: ATT_OP_READ_BY_TYPE_REQ
+void 	att_req_read_by_type (u8 *dat, u16 start_attHandle, u16 end_attHandle, u8 *uuid, int uuid_len);
+		// 0x0a: ATT_OP_READ_REQ
+void 	att_req_read (u8 *dat, u16 attHandle);
+		// 0x0c: ATT_OP_READ_BLOB_REQ
+void 	att_req_read_blob (u8 *dat, u16 attHandle, u16 offset);
+		// 0x10: ATT_OP_READ_BY_GROUP_TYPE_REQ
+void 	att_req_read_by_group_type (u8 *dat, u16 start_attHandle, u16 end_attHandle, u8 *uuid, int uuid_len);
+		// 0x12: ATT_OP_WRITE_REQ
+void 	att_req_write (u8 *dat, u16 attHandle, u8 *buf, int len);
+		// 0x52: ATT_OP_WRITE_CMD
+void 	att_req_write_cmd (u8 *dat, u16 attHandle, u8 *buf, int len);
+
+#endif
+
+
+
+

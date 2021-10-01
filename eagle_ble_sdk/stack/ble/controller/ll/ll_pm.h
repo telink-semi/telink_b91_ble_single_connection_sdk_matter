@@ -4,7 +4,7 @@
  * @brief	This is the header file for BLE SDK
  *
  * @author	BLE GROUP
- * @date	2020.06
+ * @date	06,2020
  *
  * @par     Copyright (c) 2020, Telink Semiconductor (Shanghai) Co., Ltd. ("TELINK")
  *          All rights reserved.
@@ -58,6 +58,9 @@
 #define			SUSPEND_CONN				BIT(1)
 #define			DEEPSLEEP_RETENTION_ADV		BIT(2)
 #define			DEEPSLEEP_RETENTION_CONN	BIT(3)
+#if (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+#define			MCU_STALL					BIT(6)
+#endif
 
 
 
@@ -111,13 +114,14 @@ void 		bls_pm_setWakeupSource(u8 source);
  */
 u32 		bls_pm_getSystemWakeupTick(void);
 
+#if (MCU_CORE_TYPE == MCU_CORE_9518)
 /**
  * @brief	for user to get low power mode next connect event wake up time
  * @param	none
  * @return	blt_next_event_tick
  */
 u32 		bls_pm_getNexteventWakeupTick(void);
-
+#endif
 /**
  * @brief	for user to set latency manually for save power
  * @param	latency - bltPm.user_latency
