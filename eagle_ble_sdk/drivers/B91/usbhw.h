@@ -56,9 +56,9 @@
 
 #pragma once
 
+#include "reg_include/register_b91.h"
 #include "analog.h"
 #include "gpio.h"
-#include "reg_include/register_b91.h"
 
 typedef enum
 {
@@ -153,6 +153,7 @@ static inline int usbhw_is_ctrl_ep_busy(void)
     return reg_ctrl_ep_irq_sta & FLD_USB_EP_BUSY;
 }
 
+
 /**
  * @brief     This function servers to reset the pointer of Endpoint.
  * @param[in] ep - select the Endpoint
@@ -240,6 +241,7 @@ static inline void usbhw_clr_irq_status(usb_irq_status_e status)
     reg_usb_irq_mask |= status;
 }
 
+
 /**
  * @brief     This function servers to enable Endpoint.
  * @param[in] ep - selected  the Endpoint
@@ -280,6 +282,8 @@ static inline void usbhw_write_ep_data(unsigned int ep, unsigned char data)
 {
     reg_usb_ep_dat(ep) = data;
 }
+
+
 
 /**
  * @brief     This function servers to enable the specified Endpoint.
@@ -329,6 +333,7 @@ static inline void usbhw_data_ep_stall(unsigned int ep)
     reg_usb_ep_ctrl(ep) = FLD_USB_EP_STALL;
 }
 
+
 /**
  * @brief     This function servers to set the threshold of printer.
  * @param[in] th - set the threshold for printer
@@ -366,6 +371,7 @@ enum
     USB_HID_KB_SYS   = 4, // system : power,sleep,wakeup
     USB_HID_SOMATIC  = 5, // somatic sensor,  may have many report ids
 };
+
 
 /**
  * @brief      This function disables the manual interrupt

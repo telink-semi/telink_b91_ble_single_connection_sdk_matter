@@ -61,6 +61,7 @@ dma_config_t pwm_tx_dma_config = {
     .auto_en        = 0,
 };
 
+
 /**
  * @brief     This fuction servers to set pin as pwm0
  * @param[in] pin - selected pin
@@ -91,6 +92,7 @@ void pwm_set_pin(pwm_pin_e pin)
     gpio_function_dis((gpio_pin_e) pin);
 }
 
+
 /**
  * @brief     This function servers to configure DMA channel and some configures.
  * @param[in] chn - to select the DMA channel.
@@ -100,6 +102,7 @@ void pwm_set_dma_config(dma_chn_e chn)
 {
     dma_config(chn, &pwm_tx_dma_config);
 }
+
 
 /**
  * @brief     This function servers to configure DMA channel address and length.
@@ -114,6 +117,7 @@ void pwm_set_dma_buf(dma_chn_e chn, unsigned int buf_addr, unsigned int len)
     dma_set_size(chn, len, DMA_WORD_WIDTH);
 }
 
+
 /**
  * @brief     This function servers to enable DMA channel.
  * @param[in] chn - to select the DMA channel.
@@ -123,6 +127,8 @@ void pwm_ir_dma_mode_start(dma_chn_e chn)
 {
     dma_chn_en(chn);
 }
+
+
 
 /**
  * @brief     This function servers to configure DMA head node.
@@ -139,6 +145,7 @@ void pwm_set_dma_chain_llp(dma_chn_e chn, unsigned short * src_addr, unsigned in
     dma_set_size(chn, data_len, DMA_WORD_WIDTH);
     reg_dma_llp(chn) = (unsigned int) convert_ram_addr_cpu2bus(head_of_list);
 }
+
 
 /**
  * @brief     This function servers to configure DMA cycle chain node.
@@ -158,3 +165,4 @@ void pwm_set_tx_dma_add_list_element(dma_chn_e chn, dma_chain_config_t * config_
     config_addr->dma_chain_data_len = dma_cal_size(data_len, DMA_WORD_WIDTH);
     config_addr->dma_chain_llp_ptr  = (unsigned int) convert_ram_addr_cpu2bus(llponit);
 }
+

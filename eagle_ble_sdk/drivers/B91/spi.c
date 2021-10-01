@@ -45,8 +45,8 @@
  *******************************************************************************************************/
 #include "spi.h"
 
-#include "compiler.h"
 #include "timer.h"
+#include "compiler.h"
 static unsigned char s_hspi_tx_dma_chn;
 static unsigned char s_hspi_rx_dma_chn;
 static unsigned char s_pspi_tx_dma_chn;
@@ -281,6 +281,8 @@ void hspi_set_pin(hspi_pin_config_t * config)
     hspi_set_pin_mux((hspi_pin_def_e) config->hspi_hold_io3_pin);
 }
 
+
+
 /**
  * @brief     	This function configures pspi pin.
  * @param[in] 	config - the pointer of pin config struct.
@@ -326,6 +328,7 @@ void spi_master_init(spi_sel_e spi_sel, unsigned char div_clock, spi_mode_type_e
     reg_spi_mode0(spi_sel) &= (~FLD_SPI_MODE_WORK_MODE); // clear spi working mode
     reg_spi_mode0(spi_sel) |= (mode << 5);               // select SPI mode, support four modes
 }
+
 
 /**
  * @brief     	This function configures the clock and working mode for SPI interface.
@@ -562,6 +565,7 @@ void spi_write(spi_sel_e spi_sel, unsigned char * data, unsigned int len)
     }
 }
 
+
 /**
  * @brief     	This function servers to read hspi fifo.
  * @param[in] 	spi_sel	- the spi module.
@@ -783,6 +787,7 @@ void spi_set_tx_dma(spi_sel_e spi_sel, unsigned char * src_addr, unsigned int le
     dma_chn_en(tx_dma_chn);
 }
 
+
 /**
  * @brief   	this  function set spi rx dma channel.
  * @param[in]  	spi_sel     - the spi module.
@@ -806,6 +811,7 @@ void spi_set_rx_dma(spi_sel_e spi_sel, unsigned char * dst_addr, unsigned int le
     dma_set_size(rx_dma_chn, len, DMA_WORD_WIDTH);
     dma_chn_en(rx_dma_chn);
 }
+
 
 /**
  * @brief     	This function serves to normal write data by dma.

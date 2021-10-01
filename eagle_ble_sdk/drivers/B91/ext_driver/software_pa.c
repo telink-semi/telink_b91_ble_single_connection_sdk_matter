@@ -43,6 +43,7 @@
  *          SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *******************************************************************************************************/
+#include "compiler.h"
 #include "software_pa.h"
 #include "../gpio.h"
 #include "compiler.h"
@@ -78,6 +79,7 @@ void app_rf_pa_handler(int type)
 #endif
 }
 
+
 void rf_pa_init(void)
 {
 #if (PA_ENABLE)
@@ -92,3 +94,4 @@ void rf_pa_init(void)
     blc_rf_pa_cb = app_rf_pa_handler;
 #endif
 }
+

@@ -104,6 +104,7 @@ void i2c_master_send_stop(unsigned char en)
     }
 }
 
+
 /**
  * @brief      This function selects a pin port for I2C interface.
  * @param[in]  sda_pin - the pin port selected as I2C sda pin port.
@@ -184,6 +185,8 @@ void i2c_master_init(void)
     reg_i2c_sct0 |= FLD_I2C_MASTER; // i2c master enable.
 }
 
+
+
 /**
  * @brief      This function serves to set the i2c clock frequency.The i2c clock is consistent with the system clock.
  * @param[in]  clock - the division factor of I2C clock,
@@ -200,6 +203,7 @@ void i2c_set_master_clk(unsigned char clock)
     reg_clk_en0 |= FLD_CLK0_I2C_EN;
 }
 
+
 /**
  * @brief      This function serves to enable slave mode.
  * @param[in]  id - the id of slave device.it contains write or read bit,the laster bit is write or read bit.
@@ -212,6 +216,7 @@ void i2c_slave_init(unsigned char id)
 
     reg_i2c_id = id; // defaul eagle slave ID is 0x5a
 }
+
 
 /**
  *  @brief      The function of this API is to ensure that the data can be successfully sent out.
@@ -258,6 +263,7 @@ unsigned char i2c_master_write(unsigned char id, unsigned char * data, unsigned 
     return 1;
 }
 
+
 /**
  * @brief      This function serves to read a packet of data from the specified address of slave device
  * @param[in]  id - to set the slave ID.for kite slave ID=0x5c,for eagle slave ID=0x5a.
@@ -297,6 +303,7 @@ unsigned char i2c_master_read(unsigned char id, unsigned char * data, unsigned c
         ;
     return 1;
 }
+
 
 /**
  * @brief      This function serves to write data and restart read data.
@@ -366,6 +373,7 @@ unsigned char i2c_master_write_read(unsigned char id, unsigned char * wr_data, u
     return 1;
 }
 
+
 /**
  * @brief      The function of this API is just to write data to the i2c tx_fifo by DMA.
  * @param[in]  id - to set the slave ID.for kite slave ID=0x5c,for eagle slave ID=0x5a.
@@ -425,6 +433,7 @@ void i2c_slave_set_tx_dma(unsigned char * data, unsigned char len)
     dma_chn_en(i2c_dma_tx_chn);
 }
 
+
 /**
  * @brief      This function serves to receive a packet of data from master device,It will trigger after the master sends the write
  * sequence.
@@ -438,6 +447,7 @@ void i2c_slave_set_rx_dma(unsigned char * data, unsigned char len)
     dma_set_size(i2c_dma_rx_chn, len, DMA_WORD_WIDTH);
     dma_chn_en(i2c_dma_rx_chn);
 }
+
 
 /**
  * @brief     This function serves to receive data .
@@ -478,6 +488,7 @@ void i2c_slave_write(unsigned char * data, unsigned char len)
     }
 }
 
+
 /**
  * @brief     This function serves to set i2c tx_dam channel and config dma tx default.
  * @param[in] chn: dma channel.
@@ -499,3 +510,11 @@ void i2c_set_rx_dma_config(dma_chn_e chn)
     i2c_dma_rx_chn = chn;
     dma_config(chn, &i2c_rx_dma_config);
 }
+
+
+
+
+
+
+
+

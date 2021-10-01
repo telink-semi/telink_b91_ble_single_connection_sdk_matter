@@ -92,6 +92,9 @@ void blc_readFlashSize_autoConfigCustomFlashSector(void)
     flash_set_capacity(flash_cap);
 }
 
+
+
+
 /*
  *Kite: 	VVWWXX38C1A4YYZZ
  *Vulture:  VVWWXXD119C4YYZZ
@@ -160,3 +163,4 @@ void blc_initMacAddress(int flash_addr, u8 * mac_public, u8 * mac_random_static)
         flash_write_page(flash_addr + 6, 2, (u8 *) (mac_random_static + 3));
     }
 }
+

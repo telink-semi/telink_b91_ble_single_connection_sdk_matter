@@ -285,3 +285,4 @@ _attribute_text_sec_ void flash_set_xip_config(flash_xip_config_t config);
  * @return		none.
  */
 _attribute_ram_code_sec_noinline_ void flash_send_cmd(unsigned char cmd);
+

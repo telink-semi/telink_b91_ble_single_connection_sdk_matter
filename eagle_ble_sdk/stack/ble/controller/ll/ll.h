@@ -96,6 +96,15 @@ typedef int (*blc_main_loop_phyTest_callback_t)(void);
 #define			BLT_EV_FLAG_SUSPEND_EXIT						15
 #define			BLT_EV_FLAG_VERSION_IND_REV						16
 
+
+
+#if (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+	my_fifo_t			blt_rxfifo;
+	u8					blt_rxfifo_b[];
+
+	my_fifo_t			blt_txfifo;
+	u8					blt_txfifo_b[];
+#endif
 typedef struct {
 	u16		connEffectiveMaxRxOctets;
 	u16		connEffectiveMaxTxOctets;

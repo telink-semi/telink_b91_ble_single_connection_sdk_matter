@@ -48,6 +48,7 @@
 #include "pwm.h"
 #include "stimer.h"
 
+
 unsigned char audio_rx_dma_chn;
 unsigned char audio_tx_dma_chn;
 
@@ -101,6 +102,8 @@ dma_config_t audio_dma_tx_config = {
     .auto_en        = 0, // must 0
 };
 
+
+
 /**
  * @brief      This function serves to invert data between R channel and L channel.
  * @param[in]  en - I2S_DATA_INVERT_DIS: L channel (default); I2S_DATA_INVERT_EN: R channel.
@@ -132,6 +135,7 @@ void audio_set_codec_in_path_a_d_gain(codec_in_path_digital_gain_e d_gain, codec
     audio_i2s_codec_config.in_digital_gain = d_gain;
     audio_i2s_codec_config.in_analog_gain  = a_gain;
 }
+
 
 /**
  * 	@brief      This function serves to set out path digital and analog gain  .
@@ -221,6 +225,7 @@ void aduio_set_chn_wl(audio_channel_wl_mode_e chn_wl)
         break;
     }
 }
+
 
 /**
  * @brief     This function selects  pin  for i2s.
@@ -339,6 +344,7 @@ void audio_set_dmic_pin(dmic_pin_group_e pin_gp)
     }
 }
 
+
 /**
  * @brief     This function serves to enable rx_dma channel.
  * @return    none
@@ -411,6 +417,7 @@ void audio_rx_dma_add_list_element(dma_chain_config_t * config_addr, dma_chain_c
     config_addr->dma_chain_llp_ptr  = (unsigned int) convert_ram_addr_cpu2bus(llpointer);
 }
 
+
 /**
  * @brief     This function serves to config  tx_dma channel.
  * @param[in] chn          - dma channel
@@ -446,6 +453,7 @@ void audio_tx_dma_add_list_element(dma_chain_config_t * config_addr, dma_chain_c
     config_addr->dma_chain_data_len = dma_cal_size(data_len, 4);
     config_addr->dma_chain_llp_ptr  = (unsigned int) convert_ram_addr_cpu2bus(llpointer);
 }
+
 
 /**
  * @brief     This function serves to  initialize audio by mc
@@ -683,6 +691,8 @@ void audio_codec_dac_config(i2s_codec_m_s_mode_e mode, audio_sample_rate_e rate,
     }
 }
 
+
+
 /**
  * @brief     This function serves to config codec for adc.
  * @param[in] mode        - select i2s as master or slave
@@ -823,6 +833,7 @@ void audio_codec_adc_config(i2s_codec_m_s_mode_e mode, audio_input_mode_e in_mod
     }
 }
 
+
 /**
  * @brief     This function serves to set data path.
  * @param[in] audio_flow    - audio flow  select
@@ -837,6 +848,7 @@ void audio_mux_config(audio_flow_e audio_flow, audio_in_mode_e ain0_mode, audio_
     reg_audio_tune = MASK_VAL(FLD_AUDIO_I2S_I2S_AIN0_COME, ain0_mode, FLD_AUDIO_I2S_I2S_AIN1_COME, ain1_mode,
                               FLD_AUDIO_I2S_I2S_AOUT_COME, i2s_aout_mode);
 }
+
 
 /**
  * @brief     This function serves to config interface, word length, and m/s .
@@ -980,6 +992,7 @@ _attribute_ram_code_sec_noinline_ void audio_set_i2s_clock(audio_sample_rate_e a
     }
 }
 
+
 /**
  * @brief  This function serves to set audio rx dma chain transfer.
  * @param[in] chn       -  dma channel
@@ -1043,6 +1056,7 @@ void audio_set_ext_codec(void)
     }
 }
 
+
 /**
  * @brief     This function serves to  set pwm0 as external codec mclk
  * @param[in] pin - the pin of pwm0
@@ -1059,7 +1073,9 @@ void pwm_set(pwm_pin_e pin)
     pwm_set_tcmp(PWM0_ID, 1);
     pwm_set_tmax(PWM0_ID, 2); // 24M/2=12M pwm  mclk to  ext codec clk
     pwm_start(PWM0_ID);
+
 }
+
 
 /**
  * @brief This function serves to initialize audio(external codec WM8731) by i2c.
@@ -1111,6 +1127,8 @@ _attribute_ram_code_sec_ void audio_change_sample_rate(audio_sample_rate_e rate)
     audio_set_i2s_clock(rate, AUDIO_RATE_EQUAL, 1);
     reg_audio_codec_dac_freq_ctr = (FLD_AUDIO_CODEC_DAC_FREQ & rate);
 }
+
+
 
 /**
  * @brief     This function serves to power down codec_dac.
@@ -1165,6 +1183,7 @@ void audio_codec_adc_power_down(void)
     audio_clk_en(0, 0);
 }
 
+
 /**
  * @brief     This function serves to power on codec_adc.
  * @return    none
@@ -1182,3 +1201,7 @@ void audio_codec_adc_power_on(void)
 
     audio_rx_dma_en();
 }
+
+
+
+

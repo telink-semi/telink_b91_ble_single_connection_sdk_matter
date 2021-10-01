@@ -67,7 +67,13 @@
 #include "stack/ble/controller/ll/ll_conn/ll_slave.h"
 #include "stack/ble/controller/ll/ll_conn/ll_conn_csa.h"
 
+#if(MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
+#include "stack/ble/controller/ll/ll_init.h"
+#include "stack/ble/controller/ll/ll_conn/ll_master.h"
+#endif
+
 #include "stack/ble/controller/ll/ll_ext_adv.h"
+
 
 #include "phy/phy.h"
 #include "phy/phy_stack.h"

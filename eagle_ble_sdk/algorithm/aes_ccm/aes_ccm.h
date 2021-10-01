@@ -135,6 +135,7 @@ typedef struct
     llPhysChnPdu_t * pllPhysChnPdu; // LL physical channel PDU
 } leCryptCtrl_t;
 
+
 /**
  * @brief   	this function is used to encrypt the plaintext
  * @param[in]	*key - aes key: 128 bit key for the encryption of the data, little--endian.

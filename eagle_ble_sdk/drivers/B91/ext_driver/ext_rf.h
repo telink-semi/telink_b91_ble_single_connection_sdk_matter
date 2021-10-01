@@ -148,6 +148,7 @@ static inline void rf_set_ble_access_code_adv(void)
     write_reg32(0x0140808, 0xd6be898e);
 }
 
+
 /**
  * @brief   This function serves to triggle accesscode in coded Phy mode.
  * @param   none.
@@ -186,5 +187,7 @@ static inline void rf_ble_tx_done()
  * @return    none.
  */
 void rf_switchPhyTestMode(rf_mode_e mode);
+
+
 
 #endif /* DRIVERS_B91_DRIVER_EXT_EXT_RF_H_ */
