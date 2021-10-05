@@ -87,6 +87,10 @@
 
 typedef int (*func_myudb_hci_cmd_cb_t) (unsigned char *, int);
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void 	myudb_register_hci_cb (void *p);
 void    myudb_register_hci_debug_cb (void *p);
 
@@ -104,6 +108,9 @@ void 	usb_send_str_data (char *str, u8 *ph, int n);
 
 void 	usb_send_str_u32s (char *str, u32 d0, u32 d1, u32 d2, u32 d3);
 
+#ifdef __cplusplus
+}
+#endif
 
 #define			my_irq_disable()		u32 rie = core_interrupt_disable ()
 #define			my_irq_restore()		core_restore_interrupt(rie)

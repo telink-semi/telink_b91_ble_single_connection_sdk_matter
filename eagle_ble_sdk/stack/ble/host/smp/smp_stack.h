@@ -378,7 +378,9 @@ extern smp_info_handler_t		func_smp_info;
 extern smp_init_handler_t		func_smp_init;
 extern smp_check_handler_t		func_smp_check; //HID on android 7.0
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      This function is used to set the flag in SMP pairing process.
@@ -583,5 +585,9 @@ u32 	blc_smp_param_updateToNearestByIndex(u8 index);
 
 void 	tbl_bond_slave_delete_by_index(int index) ;
 /******************************* smp_storage end *************************************************************************/
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* STACK_BLE_SMP_SMP_STACK_H_ */

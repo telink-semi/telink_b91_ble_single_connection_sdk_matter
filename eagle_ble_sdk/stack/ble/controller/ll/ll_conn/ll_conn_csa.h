@@ -47,7 +47,9 @@
 #define LL_CONN_CSA_H_
 
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      this function is used to initialize channel selection algorithm #2 feature
@@ -56,10 +58,8 @@
  */
 void blc_ll_initChannelSelectionAlgorithm_2_feature(void);
 
-
-
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* LL_CONN_CSA_H_ */

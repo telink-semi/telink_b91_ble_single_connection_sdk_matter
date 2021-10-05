@@ -25,6 +25,7 @@
  *          file under Mutual Non-Disclosure Agreement. NO WARRENTY of ANY KIND is provided.
  *
  *******************************************************************************************************/
+#include "types.h"
 #include "tl_common.h"
 #include "drivers.h"
 #include "stack/ble/ble_common.h"
@@ -32,9 +33,6 @@
 #include "stack/ble/ble_format.h"
 
 #include "aes_ccm.h"
-
-
-
 
 /******************************** Test case for HW AES (little or big --endian )*********************************************
 //Refer to Core4.0 Spec <<BLUETOOTH SPECIFICATION Version 4.0 [Vol 6], Sample Data, Page2255
@@ -73,18 +71,18 @@ void aes_ll_encryption(u8* key, u8* plaintext, u8 *encrypted_data)
 {
     for (int i=0; i<4; i++){
     	reg_aes_key(i) = *(u32*)key;
-    	aes_data_buff[i] = *(u32*)plaintext;
+    	aes_data_buff_ptr_get()[i] = *(u32*)plaintext;
     	key += 4;
     	plaintext += 4;
     }
 
-    reg_aes_ptr = (u32)aes_data_buff;
+    reg_aes_ptr = (u32)aes_data_buff_ptr_get();
 
-    aes_set_mode(FLD_AES_START);      //cipher mode
+    aes_set_mode((aes_mode_e)FLD_AES_START);      //cipher mode
 
     while(reg_aes_mode & FLD_AES_START){};
 
-	u8 *ptr = (u8 *)&aes_data_buff[4];
+	u8 *ptr = (u8 *)&aes_data_buff_ptr_get()[4];
 	for (int i=0; i<16; i++) {
 		encrypted_data[i] = ptr[i];
 	}
@@ -120,13 +118,13 @@ static inline void aes_feed_data(u8 plaintext[16])
 {
 	u8 *ptr = plaintext + 12;
     for (int i=0; i<4; i++){
-    	aes_data_buff[i] = (ptr[3]) | (ptr[2]<<8) | (ptr[1]<<16) | (ptr[0]<<24);
+    	aes_data_buff_ptr_get()[i] = (ptr[3]) | (ptr[2]<<8) | (ptr[1]<<16) | (ptr[0]<<24);
     	ptr -= 4;
     }
 
-    reg_aes_ptr = (u32)aes_data_buff;
+    reg_aes_ptr = (u32)aes_data_buff_ptr_get();
 
-    aes_set_mode(FLD_AES_START);      //cipher mode
+    aes_set_mode((aes_mode_e)FLD_AES_START);      //cipher mode
 
     while(reg_aes_mode & FLD_AES_START){};
 }
@@ -139,7 +137,7 @@ static inline void aes_feed_data(u8 plaintext[16])
  */
 static inline void aes_read_result(u8 result[16])
 {
-	u8 *ptr = (u8 *)&aes_data_buff[4];
+	u8 *ptr = (u8 *)&aes_data_buff_ptr_get()[4];
 	for (int i=0; i<16; i++) {
 		result[i] = ptr[15 - i];
 	}
@@ -159,8 +157,8 @@ static inline void aes_read_result(u8 result[16])
  * @param   result - result (result)
  * @return  status l2cap_sts_t
  */
-_attribute_ram_code_
-static u8 aes_ccmAuthTran(u8 micLen, u8 *iv, u8 *mStr, u16 mStrLen, u8 *aStr, u16 aStrLen, u8 *result)
+__attribute__((section(".ram_code"))) __attribute__((noinline))
+static u8 aes_ccmAuthTran(u8 micLen, u8 *iv, u8 *mStr, u16 mStrLen, u8 *aStr, u16 aStrLen, u8 *result) 
 {
 	u16 msgLen;
 	u8 mStrIndex = 0;
@@ -259,7 +257,7 @@ static u8 aes_ccmAuthTran(u8 micLen, u8 *iv, u8 *mStr, u16 mStrLen, u8 *aStr, u1
  * @param   result - result (result)
  * @return  status l2cap_sts_t
  */
-_attribute_ram_code_
+__attribute__((section(".ram_code"))) __attribute__((noinline))
 static u8 aes_ccmBaseTran(u8 micLen, u8 *iv, u8 *mStr, u16 mStrLen, u8 *aStr, u8 aStrLen, u8 *mic)
 {
 	u16 msgLen;//fix, DLE length greater than 240Bytes, msgLen is 256
@@ -379,7 +377,7 @@ void aes_ll_ccm_encryption(u8 *pkt, int master, ble_crypt_para_t *pd)
  * @param[in]   pd - Reference structure ble_crypt_para_t
  * @return  	0: decryption succeeded; 1: decryption failed
  */
-_attribute_ram_code_
+__attribute__((section(".ram_code"))) __attribute__((noinline)) 
 int aes_ll_ccm_decryption(u8 *pkt, int master, ble_crypt_para_t *pd)
 {
 	//found by yafei/qinghua.

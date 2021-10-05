@@ -48,6 +48,9 @@
 
 #include "stack/ble/ble_common.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      reset whitelist
@@ -84,7 +87,8 @@ ble_sts_t ll_whiteList_delete(u8 type, u8 *addr);
  */
 ble_sts_t ll_whiteList_getSize(u8 *returnPublicAddrListSize) ;
 
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* LL_WHITELIST_H_ */

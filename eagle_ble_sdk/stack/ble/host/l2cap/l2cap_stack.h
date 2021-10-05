@@ -54,11 +54,15 @@ typedef struct
 
 extern _attribute_aligned_(4) l2cap_buff_t l2cap_buff;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 ble_sts_t 	blt_update_parameter_request (void);
 ble_sts_t   blc_l2cap_pushData_2_controller (u16 connHandle, u16 cid, u8 *format, int format_len, u8 *pDate, int data_len);
 
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* STACK_BLE_L2CAP_L2CAP_STACK_H_ */

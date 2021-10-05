@@ -43,7 +43,7 @@
  *          SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *******************************************************************************************************/
-#ifndef ZEPHYR
+#ifndef USE_ZEPHYR_HAL_HEADERS
 
 #pragma once
 
@@ -119,4 +119,4 @@ typedef u32 UTCTime;
 typedef u32 arg_t;
 typedef u32 status_t;
 
-#endif
+#endif /* USE_ZEPHYR_HAL_HEADERS */

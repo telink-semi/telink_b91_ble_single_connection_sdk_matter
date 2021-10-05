@@ -77,7 +77,9 @@ typedef 	void (*pm_appWakeupLowPower_callback_t)(int);
 
 
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief	for user to initialize low power mode
@@ -166,9 +168,8 @@ void 		blc_pm_setDeepsleepRetentionEarlyWakeupTiming(u32 earlyWakeup_us);
  */
 void 		blc_pm_setDeepsleepRetentionType(SleepMode_TypeDef sleep_type);
 
-
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* LL_PM_H_ */

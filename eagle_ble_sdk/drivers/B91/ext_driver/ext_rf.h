@@ -71,6 +71,10 @@ typedef enum
     RF_ACC_CODE_TRIGGER_MANU = BIT(1), /**< manual trigger */
 } rf_acc_trigger_mode;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void ble_rf_set_rx_dma(unsigned char * buff, unsigned char fifo_byte_size) __attribute__((section(".ram_code")))
 __attribute__((noinline));
 
@@ -188,6 +192,8 @@ static inline void rf_ble_tx_done()
  */
 void rf_switchPhyTestMode(rf_mode_e mode);
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* DRIVERS_B91_DRIVER_EXT_EXT_RF_H_ */

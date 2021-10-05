@@ -48,8 +48,9 @@
 
 #include "stack/ble/ble_format.h"
 
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      for user to initialize advertising module
@@ -152,5 +153,8 @@ ble_sts_t 	blc_ll_setAdvParamInConnSlaveRole( u8 		  *adv_data,  u8             
 											   adv_type_t  advType,   own_addr_type_t ownAddrType, u8 adv_channelMap, adv_fp_type_t advFilterPolicy);
 #endif
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* LL_ADV_H_ */

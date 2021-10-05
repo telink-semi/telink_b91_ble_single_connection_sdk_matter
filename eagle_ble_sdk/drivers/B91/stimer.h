@@ -76,6 +76,11 @@
 /**********************************************************************************************************************
  *                                      global function prototype                                                     *
  *********************************************************************************************************************/
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief define system clock tick per us/ms/s.
  */
@@ -203,5 +208,8 @@ _attribute_ram_code_sec_noinline_   void delay_us(unsigned int microsec);
  */
 _attribute_ram_code_sec_noinline_  void  delay_ms(unsigned int millisec);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* STIMER_H_ */

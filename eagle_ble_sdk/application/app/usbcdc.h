@@ -53,12 +53,6 @@
 #include "tl_common.h"
 #include "drivers.h"
 
-/* Enable C linkage for C++ Compilers: */
-#if defined(__cplusplus)
-    extern "C" {
-#endif
-
-
 typedef void ( *cdc_handlerFn_t)( u8* pData);
 
 typedef struct {
@@ -73,6 +67,10 @@ typedef enum usbcdc_sts_e {
     USB_MULTIBLOCK,
 } usbcdc_sts_t;
 
+/* Enable C linkage for C++ Compilers: */
+#if defined(__cplusplus)
+    extern "C" {
+#endif
 
 void CDC_Device_ProcessControlRequest(u8 bRequest, u16 wValue, u16 wIndex, u16 wLength);
 
@@ -84,9 +82,6 @@ u8*  usbcdc_getData(void);
 void usbcdc_init(void);
 void usbcdc_setCB(cdc_handlerFn_t rxFunc, cdc_handlerFn_t txCb);
 void usbcdc_setRxBuf(u8 *buf);
-
-
-
 
 /* Disable C linkage for C++ Compilers: */
 #if defined(__cplusplus)

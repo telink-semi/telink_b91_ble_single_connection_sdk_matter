@@ -28,16 +28,7 @@
 #ifndef STACK_BLE_ATTR_ATTR_STACK_H_
 #define STACK_BLE_ATTR_ATTR_STACK_H_
 
-
-
-
-
-
-
 #define ATT_MTU_SIZE                        23  //!< Minimum ATT MTU size
-
-
-
 
 //TELINK MTU no longer than 256, so 1 byte is enough
 typedef struct{
@@ -49,41 +40,24 @@ typedef struct{
 	u8 Data_pending_time;    //10ms unit
 	u8 mtu_exchange_pending;
 }att_para_t;
+
 extern att_para_t bltAtt;
-
-
-
-
-
-
 extern u16	blt_indicate_handle;
-
-
-
-
-
-
-
-
-
 extern u32 att_service_discover_tick;
 
-u8 * l2cap_att_handler(u16 connHandle, u8 * p);
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-
-u8 			blc_gatt_requestServiceAccess(u16 connHandle, int gatt_perm);
-
-
-
+u8 *l2cap_att_handler(u16 connHandle, u8 * p);
+u8 	blc_gatt_requestServiceAccess(u16 connHandle, int gatt_perm);
 
 #if (MCU_CORE_TYPE == MCU_CORE_9518)
 int			blt_att_sendMtuRequest (u16 connHandle);
 #endif
 
-
-
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* STACK_BLE_ATTR_ATTR_STACK_H_ */

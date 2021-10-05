@@ -48,12 +48,9 @@
 #ifndef LL_SLAVE_H_
 #define LL_SLAVE_H_
 
-
-
-
-
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      for user to initialize ACL connection slave role.
@@ -125,5 +122,8 @@ ble_sts_t 	bls_hci_mod_setEventMask_cmd(u32 evtMask);
 	#define blc_ll_disconnect(conn, reason)     	bls_ll_terminateConnection(reason)
 #endif
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* LL_SLAVE_H_ */

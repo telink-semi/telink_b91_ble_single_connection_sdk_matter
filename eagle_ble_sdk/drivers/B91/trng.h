@@ -80,6 +80,10 @@
  *                                      global function prototype                                                     *
  *********************************************************************************************************************/
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief     This function performs to get one random number.If chip in suspend TRNG module should be close.
  *            else its current will be larger.
@@ -92,5 +96,9 @@ void trng_init(void);
  * @return    the value of one random number
  **/
 unsigned int trng_rand(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

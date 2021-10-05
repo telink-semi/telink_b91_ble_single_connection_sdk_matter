@@ -128,6 +128,10 @@ extern u8	tx_settle_slave[4];
 extern u8	tx_settle_master[4];
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int 	blt_reset_conn_phy_param(ll_conn_phy_t* pconn_phy);
 void 	rf_ble_switch_phy(le_phy_type_t phy, le_coding_ind_t coding_ind);
 
@@ -169,13 +173,9 @@ void blt_InitPhyTestDriver(rf_mode_e rf_mode);
 
 /******************************* phy_test end ***************************************************************************/
 
-
-
-
-
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* PHY_STACK_H_ */
 

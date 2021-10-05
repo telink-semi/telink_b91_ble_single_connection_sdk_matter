@@ -176,7 +176,9 @@ typedef enum
 
 }ATT_HANDLE;
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      Initialize the attribute table
@@ -185,11 +187,9 @@ typedef enum
  */
 void my_att_tbl_init (void);
 
-
-
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif  //end of APP_USE_DEFAULT_HID_BATTERY_OTA_ATT_TABLE
 #endif /* DEFAULT_ATT_H_ */

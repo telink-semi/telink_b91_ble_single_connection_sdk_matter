@@ -43,7 +43,6 @@
  *          SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *******************************************************************************************************/
-
 #include "tl_common.h"
 #include "drivers.h"
 #include "utility.h"
@@ -151,7 +150,7 @@ int my_fifo_push (my_fifo_t *f, u8 *p, int n)
 		return -1;
 	}
 
-	if (n >= f->size)
+	if ((u32)n >= f->size)
 	{
 		return -1;
 	}

@@ -47,10 +47,12 @@
 #ifndef ECC_LL_H_
 #define ECC_LL_H_
 
-
 extern const u8 blt_ecc_dbg_priv_key[32];
 extern const u8 blt_ecc_dbg_pub_key[64];
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
 * @brief		This function is used to register the random number function needed for ECC calculation
@@ -81,6 +83,9 @@ int 			blt_ecc_gen_dhkey(const unsigned char peer_pub[64], const unsigned char o
 
 
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* ECC_LL_H_ */
 

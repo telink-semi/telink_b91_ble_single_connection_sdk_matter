@@ -162,11 +162,19 @@ typedef enum {
 	 MIC_INTERNAL_ERROR_LOW = 0xff,
 }MicOpenError_TypeDef;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 unsigned char app_audio_key_start(unsigned char isPress);
 int app_audio_timeout_proc(void);
 int app_audio_timeout_proc(void);
 int app_auido_google_callback(u16 connHandle,void* p);
 void google_handle_init(u16 ctl_dp_h, u16 report_dp_h);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

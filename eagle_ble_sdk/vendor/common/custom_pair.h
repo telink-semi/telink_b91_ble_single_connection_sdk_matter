@@ -68,6 +68,10 @@ typedef struct{
 
 extern man_pair_t blm_manPair;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief   Pair management initialization for master.
  * @param   none.
@@ -121,6 +125,8 @@ void user_tbl_slave_mac_delete_all(void);
  */
 void user_tbl_salve_mac_unpair_proc(void);
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* APP_PAIR_H_ */

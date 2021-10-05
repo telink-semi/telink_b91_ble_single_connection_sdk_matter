@@ -47,6 +47,10 @@
 #define APP_UI_H_
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void app_ui_init_normal(void);
 void app_ui_init_deepRetn(void);
 
@@ -84,10 +88,8 @@ extern void 	app_disable_slave_latency(u8 time_second);
 extern void		amazon_audio_start(void);
 extern void		ui_loop(void);
 
-
-
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* APP_UI_H_ */

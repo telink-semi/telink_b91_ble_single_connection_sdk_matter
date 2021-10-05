@@ -47,7 +47,15 @@
 #define  NPE_H_
 #include "reg_include/npe_reg.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void npe_set_reg(void);
 void npe_set_config(unsigned int desc_pointer );
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

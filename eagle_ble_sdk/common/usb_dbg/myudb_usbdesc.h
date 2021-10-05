@@ -933,11 +933,19 @@ typedef struct {
 	USB_Descriptor_Endpoint_t endpo1;
 } MYUDB_USB_Descriptor_Configuration_t;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 u8* myudb_usbdesc_get_language(void);
 u8* myudb_usbdesc_get_vendor(void);
 u8* myudb_usbdesc_get_product(void);
 u8* myudb_usbdesc_get_serial(void);
 u8* myudb_usbdesc_get_device(void);
 u8* myudb_usbdesc_get_configuration(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

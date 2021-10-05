@@ -163,6 +163,10 @@ typedef int (*hci_event_handler_t) (u32 h, u8 *para, int n);
 extern hci_event_handler_t		blc_hci_event_handler;
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #if (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
 	int 	blc_acl_from_btusb ();
 	int 	blc_hci_tx_to_btusb (void);
@@ -294,4 +298,8 @@ int 		blc_hci_sendACLData2Host (u16 handle, u8 *p);
  * @return     0,-1
  */
 int 		blc_hci_send_data (u32 h, u8 *para, int n);
+
+#ifdef __cplusplus
+}
+#endif
 /******************************* User Interface  End  ******************************************************************/

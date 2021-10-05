@@ -46,10 +46,6 @@
 #ifndef BLT_COMMON_H_
 #define BLT_COMMON_H_
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include "drivers.h"
 
 
@@ -112,8 +108,9 @@ extern "C" {
 extern u32 flash_sector_mac_address;
 extern u32 flash_sector_calibration;
 
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief		This function is used to enable the external crystal capacitor

@@ -74,6 +74,10 @@ typedef enum
     USB_IRQ_SUSPEND_STATUS = BIT(7),
 } usb_irq_status_e;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief     This function servers to set ed8 to fifo mode.
  * @return    none.
@@ -461,3 +465,7 @@ static inline void usb_set_pin_en(void)
     gpio_input_en((gpio_pin_e) (GPIO_PA5 | GPIO_PA6)); // DP/DM must set input enable
     usb_dp_pullup_en(1);
 }
+
+#ifdef __cplusplus
+}
+#endif

@@ -49,11 +49,7 @@
 
 #include "algorithm/ecc/hw_ecc.h"
 
-
 #define			hECC_BYTES			32
-
-
-
 
 /* hECC_RNG_Function type
 The RNG function should fill 'size' random bytes into 'dest'. It should return 1 if
@@ -64,6 +60,9 @@ hECC_make_key(). */
 
 typedef int (*hECC_rng_func)(unsigned char *dest, unsigned size);
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief		The function that will be used to generate random bytes.
@@ -95,6 +94,9 @@ unsigned char hwECC_shared_secret(const unsigned char public_key[hECC_BYTES*2],
 
 
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* HW_ECC_H_ */
 

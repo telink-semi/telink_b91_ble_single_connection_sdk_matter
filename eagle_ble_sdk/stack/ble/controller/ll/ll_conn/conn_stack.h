@@ -116,6 +116,9 @@ extern u8 blt_tx_empty_packet[6];
 
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 int 		blt_ll_connect_common(st_ll_conn_t *pc, rf_packet_connect_t * pInit);
 int 		blt_ll_start_common  (st_ll_conn_t *pc);
@@ -516,8 +519,8 @@ u8	blc_ll_channel_index_calc_csa2(u8 chm[5], u16 event_cntr, u16 channel_id);
 
 /******************************* ll_conn_csa end ***********************************************************************/
 
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* STACK_BLE_LL_LL_CONN_CONN_STACK_H_ */

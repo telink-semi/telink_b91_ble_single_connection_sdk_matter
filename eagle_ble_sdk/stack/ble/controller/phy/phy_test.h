@@ -78,12 +78,9 @@
 #define 		BLC_PHYTEST_DISABLE						0
 #define 		BLC_PHYTEST_ENABLE						1
 
-
-
-
-
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /**
@@ -150,7 +147,8 @@ bool 	  blc_phy_isPhyTestEnable(void);
 	int 	 phy_test_2_wire_tx_to_uart (void);
 #endif
 
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* PHY_TEST_H_ */

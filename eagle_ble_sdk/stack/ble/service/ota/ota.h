@@ -168,9 +168,16 @@ typedef struct{
 }ota_pdu16_t;
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 unsigned long crc32_half_cal(unsigned long crc, unsigned char* input, unsigned long* table, int len);
 unsigned long crc32_cal(unsigned long crc, unsigned char* input, unsigned long* table, int len);
 
+#ifdef __cplusplus
+}
+#endif
 
 #if (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
 	#define	bls_ota_registerStartCmdCb			blc_ota_registerOtaStartCmdCb

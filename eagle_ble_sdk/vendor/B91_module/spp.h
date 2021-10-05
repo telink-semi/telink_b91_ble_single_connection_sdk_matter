@@ -85,6 +85,10 @@ typedef struct {
 	u8  param[0];
 } spp_event_t;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief		this function is used to process rx uart data to remote device.
  * @param[in]   p - data pointer
@@ -106,5 +110,8 @@ int spp_send_data (u32 header, spp_event_t * pEvt);
  */
 void spp_restart_proc(void);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* SPP_H_ */

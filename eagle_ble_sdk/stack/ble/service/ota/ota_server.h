@@ -66,9 +66,9 @@ typedef void (*ota_versionCb_t)(void);
  */
 typedef void (*ota_resIndicateCb_t)(int result);
 
-
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      this function is used for user to initialize OTA server module.
@@ -193,11 +193,8 @@ ble_sts_t blc_ota_setOtaDataPacketTimeout(int timeout_second);
  */
 void bls_ota_clearNewFwDataArea(void);
 
-
-
-
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* STACK_BLE_SERVICE_OTA_OTA_SERVER_H_ */

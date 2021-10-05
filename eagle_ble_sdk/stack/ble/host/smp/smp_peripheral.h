@@ -46,8 +46,9 @@
 #ifndef SMP_PERIPHERAL_H_
 #define SMP_PERIPHERAL_H_
 
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      This function is used to initialize each parameter configuration of SMP, including the initialization of the binding area FLASH.
@@ -76,7 +77,8 @@ void 		blc_smp_configSecurityRequestSending( secReq_cfg newConn_cfg,  secReq_cfg
  */
 int 		blc_smp_sendSecurityRequest (void);
 
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* SMP_PERIPHERAL_H_ */

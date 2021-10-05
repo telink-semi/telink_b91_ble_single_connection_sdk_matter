@@ -45,7 +45,7 @@
  *******************************************************************************************************/
 #pragma once
 
-#ifndef ZEPHYR
+#ifndef USE_ZEPHYR_HAL_HEADERS
 
 #include "config/user_config.h"			//   for  __DEBUG__
 
@@ -104,4 +104,4 @@
 #endif
 
 
-#endif /* ZEPHYR */
+#endif /* USE_ZEPHYR_HAL_HEADERS */

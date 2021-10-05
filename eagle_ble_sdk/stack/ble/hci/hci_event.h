@@ -607,6 +607,9 @@ typedef struct {
 
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 int	 hci_le_cisEstablished_evt(u8 status, u16 cisHandle, u8 cigSyncDly[3], u8 cisSyncDly[3], u8 transLaty_m2s[3], u8 transLaty_s2m[3], u8 phy_m2s,
 		                      u8 phy_s2m, u8 nse, u8 bn_m2s, u8 bn_s2m, u8 ft_m2s, u8 ft_s2m, u16 maxPDU_m2s, u16 maxPDU_s2m, u16 isoIntvl );
@@ -649,6 +652,9 @@ int hci_le_encryptKeyRefresh_evt(u16 connhandle);
 
 int hci_remoteNateReqComplete_evt (u8* bd_addr);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* HCI_EVENT_H_ */
 

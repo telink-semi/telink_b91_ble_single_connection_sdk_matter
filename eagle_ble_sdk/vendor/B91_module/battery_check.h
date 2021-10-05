@@ -51,6 +51,10 @@
 #define VBAT_ALRAM_THRES_MV							2000   // 2000 mV low battery alarm
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  * @brief		get the value of lowBattDet_enable
@@ -65,5 +69,8 @@ int  battery_get_detect_enable (void);
  */
 int app_battery_power_check(u16 alram_vol_mv);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* APP_BATTDET_H_ */

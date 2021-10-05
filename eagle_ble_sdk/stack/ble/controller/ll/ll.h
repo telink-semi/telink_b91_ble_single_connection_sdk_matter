@@ -46,7 +46,6 @@
 #ifndef LL__H_
 #define LL__H_
 
-
 #include "tl_common.h"
 #include "stack/ble/ble_common.h"
 #include "stack/ble/controller/ll/ll_stack.h"
@@ -126,6 +125,11 @@ extern _attribute_aligned_(4) ll_data_extension_t  bltData;
 #if (MCU_CORE_TYPE == MCU_CORE_825x || MCU_CORE_TYPE == MCU_CORE_827x)
 extern my_fifo_t		hci_tx_fifo;
 #endif
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief	This function is used to obtain the effective maximum TX data length
  * @param	none
@@ -297,6 +301,8 @@ ble_sts_t	blc_controller_check_appBufferInitialization(void);
 #endif
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* LL__H_ */

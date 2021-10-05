@@ -49,8 +49,8 @@
 #pragma once
 
 
-#include "common/types.h"
-#include "common/bit.h"
+#include "types.h"
+#include "bit.h"
 #include "common/utility.h"
 
 #include "vendor/common/user_config.h"

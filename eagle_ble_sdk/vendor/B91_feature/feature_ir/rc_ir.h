@@ -161,6 +161,10 @@ enum{
 	CLOCK_16M_SYS_TIMER_CLK_1S =  16*1000*1000,
 };
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void ir_nec_send(u8 addr1, u8 addr2, u8 cmd);
 void pwm_stop_dma_ir_sending(void);
 int ir_is_sending(void);
@@ -168,6 +172,10 @@ int ir_sending_check(void);
 void ir_send_release(void);
 void rc_ir_irq_prc(void);
 void rc_ir_init(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 #endif

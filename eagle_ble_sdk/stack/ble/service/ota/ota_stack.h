@@ -136,7 +136,9 @@ extern int	ota_program_bootAddr;
 extern u32	ota_program_offset;
 
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /* hidden API, if user do not use firmware check, call  this API to disable it. */
 void 		blc_ota_setOtaFirmwareCheckEnable(int en);
@@ -158,5 +160,8 @@ ble_sts_t 	blt_ota_pushVersionRsp(void);
 
 unsigned short crc16 (unsigned char *pD, int len);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* STACK_BLE_SERVICE_OTA_STACK_H_ */

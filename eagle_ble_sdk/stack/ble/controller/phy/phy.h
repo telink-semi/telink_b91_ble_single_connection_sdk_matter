@@ -49,6 +49,10 @@
 #include "stack/ble/hci/hci_cmd.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief      this function is used to initialize 2M/Coded PHY  feature
  * @param	   none
@@ -80,5 +84,8 @@ ble_sts_t  	blc_ll_setPhy(	u16 connHandle,					le_phy_prefer_mask_t all_phys,
  */
 ble_sts_t	blc_ll_setDefaultConnCodingIndication(le_ci_prefer_t prefer_CI);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* PHY_H_ */

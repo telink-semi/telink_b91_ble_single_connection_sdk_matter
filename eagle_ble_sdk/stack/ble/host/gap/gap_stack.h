@@ -48,6 +48,10 @@ extern host_ota_terminate_callback_t    		host_ota_terminate_cb;
 extern u32		gap_eventMask;
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int blc_gap_send_event (u32 h, u8 *para, int n);
 
 /******************************* gap event  end ************************************************************************/
@@ -69,5 +73,8 @@ void 		blc_gap_central_init(void);
 
 /******************************* gap end ************************************************************************/
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* GAP_STACK_H_ */

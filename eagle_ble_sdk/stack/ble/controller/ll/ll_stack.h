@@ -310,6 +310,11 @@ typedef int (*blc_main_loop_post_callback_t)(void);
 
 typedef 	int (*ll_conn_complete_handler_t)(u16 conn, u8 *p);
 typedef 	int (*ll_conn_terminate_handler_t)(u16 conn, u8 *p);
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void 		blc_ll_registerConnectionCompleteHandler(ll_conn_complete_handler_t  handler);
 void 		blc_ll_registerConnectionTerminateHandler(ll_conn_terminate_handler_t  handler);
 
@@ -469,7 +474,6 @@ static inline void blt_ll_set_ble_access_code_adv(void)
 	write_reg32 (0x800408, bltParam.custom_access_code ? bltParam.custom_access_code : 0xd6be898e);
 #endif
 }
-
 
 
 
@@ -1566,6 +1570,9 @@ control  pkt:  llid 3 -> 0x03
 *-------------*-----------------------------*---------------------------------*
 ***********************************************************************************************************************/
 
+#ifdef __cplusplus
+}
+#endif
 
 
 

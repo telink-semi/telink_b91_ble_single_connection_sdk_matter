@@ -137,7 +137,9 @@ typedef enum {
 	IO_CAPABILITY_KEYBOARD_DISPLAY 	= 4,
 } io_capability_t;
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      This function is used to set the maximum number of devices that can be bound.
@@ -284,6 +286,9 @@ int 		blc_smp_setTK_by_PasskeyEntry (u32 pinCodeInput);
  */
 void		blc_smp_setNumericComparisonResult(bool YES_or_NO);
 
+#ifdef __cplusplus
+}
+#endif
 
 //////////////////////////////////////////////////////////////////////////////////////
 #define PARING_FAIL_REASON_PASSKEY_ENTRY			PAIRING_FAIL_REASON_PASSKEY_ENTRY

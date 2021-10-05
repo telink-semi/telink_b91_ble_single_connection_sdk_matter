@@ -265,10 +265,9 @@ typedef struct {
  */
 typedef int (*gap_event_handler_t) (u32 h, u8 *para, int n);
 
-
-
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      set event mask for specific gap event
@@ -285,8 +284,8 @@ void 	blc_gap_setEventMask(u32 evtMask);
  */
 void 	blc_gap_registerHostEventHandler (gap_event_handler_t  handler);
 
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* GAP_EVENT_H_ */

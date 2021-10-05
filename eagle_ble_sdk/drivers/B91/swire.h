@@ -49,7 +49,9 @@
 #include "compiler.h"
 #include "reg_include/register_b91.h"
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief     This function resets the SWIRE module.
@@ -185,5 +187,9 @@ void swire_master_write(unsigned char slave_id,unsigned char *addr, unsigned cha
  * @return	   0:read timeout  1:read success.
  */
 unsigned char  swire_master_read (unsigned char slave_id,unsigned char *addr, unsigned char addr_len,unsigned char *data,unsigned int data_len);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

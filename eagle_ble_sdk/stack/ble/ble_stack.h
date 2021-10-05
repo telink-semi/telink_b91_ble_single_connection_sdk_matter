@@ -534,10 +534,16 @@ typedef enum {
 
 }att_err_t;
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 void smemset(void * dest, int val, int len);
 void smemcpy(void *pd, void *ps, int len);
 int smemcmp(void * m1, void * m2, int len);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* BLE_STACK_H_ */

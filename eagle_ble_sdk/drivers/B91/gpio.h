@@ -192,7 +192,9 @@ typedef enum {
 }gpio_pull_type_e;
 
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      This function servers to enable gpio function.
@@ -511,6 +513,9 @@ void gpio_set_up_down_res(gpio_pin_e pin, gpio_pull_type_e up_down_res);
  */
 void gpio_set_pullup_res_30k(gpio_pin_e pin);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

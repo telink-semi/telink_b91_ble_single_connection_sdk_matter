@@ -146,20 +146,12 @@ static inline int tick1_exceed_tick2(u32 tick1, u32 tick2)
 }
 /******************************* stimer_end ********************************************************************/
 
-
-
-/******************************* aes_start ******************************************************************/
-extern unsigned int aes_data_buff[8];
-/******************************* aes_end ********************************************************************/
-
-
-
 /******************************* core_start ******************************************************************/
-#ifndef ZEPHYR
+#ifndef USE_ZEPHYR_HAL_HEADERS
 #define irq_disable core_interrupt_disable
 #define irq_enable core_interrupt_enable
 #define irq_restore(en) core_restore_interrupt(en)
-#endif /* ZEPHYR */
+#endif /* USE_ZEPHYR_HAL_HEADERS */
 /******************************* core_end ********************************************************************/
 
 
@@ -193,6 +185,10 @@ static inline unsigned char clock_get_system_clk()
 /******************************* trng_start ******************************************************************/
 #define rand trng_rand
 #define random_generator_init trng_init
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief     This function performs to generate a series of random numbers
@@ -311,5 +307,8 @@ void uart_receive_dma_set(dma_chn_e chn, unsigned char * addr, unsigned int rev_
 __attribute__((noinline));
 /******************************* uart_end ********************************************************************/
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* DRIVERS_B91_EXT_MISC_H_ */

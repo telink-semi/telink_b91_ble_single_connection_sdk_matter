@@ -276,4 +276,3 @@ static inline u8* usbmouse_get_report_desc(void) {
 static inline u16 usbmouse_get_report_desc_size(void) {
 	return sizeof(mouse_report_desc);
 }
-

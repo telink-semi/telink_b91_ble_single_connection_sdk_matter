@@ -47,9 +47,6 @@
 #ifndef SW_ECC_H_
 #define SW_ECC_H_
 
-
-
-
 /* Platform selection options.
 If uECC_PLATFORM is not defined, the code will try to guess it based on compiler macros.
 Possible values for uECC_PLATFORM are defined below: */

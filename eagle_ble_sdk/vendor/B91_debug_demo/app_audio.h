@@ -55,6 +55,10 @@ extern	unsigned char		ui_mic_enable;
 extern	unsigned char 		key_voice_press;
 extern	int     			ui_mtu_size_exchange_req;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void dmic_gpio_reset (void);
 void amic_gpio_reset (void);
 void ui_enable_mic (int en);
@@ -66,4 +70,9 @@ int server2client_auido_proc(u16 connHandle,void* p);
 void audio_state_check(void);
 void voice_key_release(void);
 void voice_key_press(void);
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* APP_AUDIO_H_ */

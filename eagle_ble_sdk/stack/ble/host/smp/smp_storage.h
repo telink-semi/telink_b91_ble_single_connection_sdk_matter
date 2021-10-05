@@ -87,6 +87,10 @@ typedef struct {  //82
 }smp_param_save_t;
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief      This function is used to get the number of currently bound devices.
  * @param[in]  none.
@@ -146,5 +150,8 @@ void		bls_smp_eraseAllParingInformation(void);
 void		blc_smp_setPeerAddrResSupportFlg(u32 flash_addr, u8 support);
 #endif
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* SMP_STORAGE_H_ */

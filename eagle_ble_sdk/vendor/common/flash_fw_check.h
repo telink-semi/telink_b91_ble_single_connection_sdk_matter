@@ -49,6 +49,9 @@
 
 #include "../../common/types.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief		This function is used to check the firmware is ok or not
@@ -61,5 +64,8 @@ bool flash_fw_check( u32 crc_init_value );
 
 void blt_firmware_completeness_check(void);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif

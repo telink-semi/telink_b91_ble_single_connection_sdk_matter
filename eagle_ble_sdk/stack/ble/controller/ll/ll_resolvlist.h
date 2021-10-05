@@ -124,6 +124,10 @@ extern	ll_ResolvingListTbl_t	ll_resolvingList_tbl;
 
 
 /******************************* User Interface  Begin *****************************************************************/
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 ble_sts_t  		ll_resolvingList_add(u8 peerIdAddrType, u8 *peerIdAddr, u8 *peer_irk, u8 *local_irk);
 ble_sts_t  		ll_resolvingList_delete(u8 peerIdAddrType, u8 *peerIdAddr);
 ble_sts_t  		ll_resolvingList_reset(void);
@@ -144,6 +148,11 @@ bool			blc_ll_resolvIsAddrResolved(const u8* irk, const u8* rpa);
 bool			blc_ll_resolvIsAddrRlEnabled(void);
 void			blc_ll_resolvListReset(void);
 void			blc_ll_resolvListInit(void);
+
+#ifdef __cplusplus
+}
+#endif
+
 /******************************* User Interface  End  ******************************************************************/
 
 

@@ -205,6 +205,10 @@ extern clk_32k_type_e g_clk_32k_src;
 /**********************************************************************************************************************
  *                                      global function prototype                                                     *
  *********************************************************************************************************************/
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**
  * @brief       This function use to select the system clock source.
@@ -261,5 +265,10 @@ _attribute_ram_code_sec_noinline_  unsigned int clock_get_32k_tick (void);
  * @return none.
  */
 _attribute_ram_code_sec_noinline_ void clock_set_32k_tick(unsigned int tick);
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif
 

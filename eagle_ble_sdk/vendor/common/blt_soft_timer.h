@@ -108,7 +108,9 @@ typedef struct blt_soft_timer_t {
 } blt_soft_timer_t;
 
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 //////////////////////// USER  INTERFACE ///////////////////////////////////
 //return 0 means Fail, others OK
@@ -165,5 +167,8 @@ int 	blt_soft_timer_delete_by_index(u8 index);
  */
 int is_timer_expired(blt_timer_callback_t *e);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* BLT_SOFT_TIMER_H_ */

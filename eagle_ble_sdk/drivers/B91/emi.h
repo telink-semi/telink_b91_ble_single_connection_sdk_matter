@@ -58,6 +58,10 @@
  *                                         function declaration                                                    *
  *********************************************************************************************************************/
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief      This function serves to set singletone power and channel
  * @param[in]  power_level - the power level.
@@ -168,4 +172,9 @@ void rf_emi_reset_baseband(void);
  * @return     the new random number
  */
 unsigned int emi_pn_gen(unsigned int state);
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif

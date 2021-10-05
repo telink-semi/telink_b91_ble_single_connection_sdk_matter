@@ -136,13 +136,17 @@ typedef struct
 } leCryptCtrl_t;
 
 
+/* Enable C linkage for C++ Compilers: */
+#if defined(__cplusplus)
+    extern "C" {
+#endif
+
 /**
- * @brief   	this function is used to encrypt the plaintext
- * @param[in]	*key - aes key: 128 bit key for the encryption of the data, little--endian.
- * @param[in]	*plaintext - 128 bit data block that is requested to be encrypted, little--endian.
- * @param[out]	*result - 128 bit encrypted data block, little--endian.
- * @return  	none.
- * @Note		Input data requires strict Word alignment
+ * @brief encrypt data according to aes algorythm
+ * @param[in]  key - encryption key
+ * @param[in]  plaintext - input data
+ * @param[out] encrypted_data - output data
+ * @return none
  */
 void aes_ll_encryption(u8 * key, u8 * plaintext, u8 * encrypted_data);
 
@@ -191,3 +195,7 @@ int aes_ll_ccm_decryption(u8 * pkt, int master, ble_crypt_para_t * pd);
  * @return  	0: decryption succeeded; 1: decryption failed
  */
 int aes_ll_ccm_decryption_v2(leCryptCtrl_t * pd);
+
+#ifdef __cplusplus
+}
+#endif

@@ -72,6 +72,9 @@ typedef enum{
 
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief	This function is used to set connect request parameter for updating connect parameter
@@ -152,10 +155,8 @@ void 		blc_l2cap_registerConnUpdateRspCb(l2cap_conn_update_rsp_callback_t cb);
  */
 void 		blc_l2cap_initMtuBuffer(u8 *pMTU_rx_buff, u16 mtu_rx_size, u8 *pMTU_tx_buff, u16 mtu_tx_size);
 
-
-
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* STACK_BLE_L2CAP_L2CAP_H_ */

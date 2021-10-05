@@ -47,7 +47,9 @@
 #define SMP_ALG_H_
 
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief   	This function is used to generate the confirm values
@@ -163,6 +165,9 @@ void 			blt_smp_alg_h7 (unsigned char *r, unsigned char salt[16], unsigned char 
  */
 void 			blt_smp_alg_h8 (unsigned char *r, unsigned char k[16], unsigned char s[16], unsigned char keyId[4]);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* SMP_ALG_H_ */
 

@@ -223,6 +223,10 @@ extern _attribute_aligned_(4) pm_status_info_s g_pm_status_info;
 extern _attribute_data_retention_sec_ unsigned char g_pm_suspend_power_cfg;
 extern _attribute_data_retention_sec_ unsigned char g_pm_vbat_v;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief		This function servers to set the match value for MDEC wakeup.
  * @param[in]	value - the MDEC match value for wakeup.
@@ -318,3 +322,7 @@ _attribute_ram_code_sec_noinline_ void pm_cal_32k_rc_offset (int offset_tick);
  * @return		none.
  */
 _attribute_ram_code_sec_noinline_ void pm_32k_rc_offset_init(void);
+
+#ifdef __cplusplus
+}
+#endif

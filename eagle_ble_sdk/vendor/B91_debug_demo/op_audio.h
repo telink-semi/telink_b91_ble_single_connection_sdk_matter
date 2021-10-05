@@ -119,6 +119,10 @@ static inline int noise_supression (s16 md) {
         return (md * md_gain + 128) >> 8;
 }
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void pcm_to_adpcm (signed short *ps, int len, signed short *pd);
 void mic_to_adpcm (signed short *ps, int len, signed short *pd);
 void adpcm_to_pcm (signed short *ps, signed short *pd, int len);
@@ -134,5 +138,9 @@ void 	proc_sdm_decoder (void);
 int  	sdm_decode_data (int *ps, int nbyte);
 void 	sdm_decode_rate (int step, int adj);
 int   	sdm_bytes_in_buffer ();
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

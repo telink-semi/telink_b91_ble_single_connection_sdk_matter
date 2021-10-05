@@ -77,6 +77,11 @@ typedef enum{
 	AES_ENCRYPT_MODE	=  0,
 	AES_DECRYPT_MODE	=  2,
 }aes_mode_e;
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif 
 /**********************************************************************************************************************
  *                                     global variable declaration                                                    *
  *********************************************************************************************************************/
@@ -84,6 +89,7 @@ typedef enum{
 /**********************************************************************************************************************
  *                                      global function prototype                                                     *
  *********************************************************************************************************************/
+
  /* @brief     This function refer to encrypt. AES module register must be used by word. , all data need big endian.
  * @param[in] key       - the key of encrypt.
  * @param[in] plaintext - the plaintext of encrypt.
@@ -173,5 +179,15 @@ static inline void aes_clr_irq_status(aes_irq_e status)
 {
 	reg_aes_clr_irq_status = (status);
 }
+
+/**
+ * @brief     This function is a getter for aes_data_buff 
+ * @return    pointer to aes_data_buff.
+ */
+unsigned int *aes_data_buff_ptr_get(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* _AES_H_ */

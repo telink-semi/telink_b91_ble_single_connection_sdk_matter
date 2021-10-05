@@ -49,11 +49,6 @@
 #include <application/usbstd/HIDReportData.h>
 #include "tl_common.h"
 
-/* Enable C linkage for C++ Compilers: */
-#if defined(__cplusplus)
-extern "C" {
-#endif
-
 // telink usb report ctrl command. used mixed with USB_REPORT_NO_EVENT
 enum {
 	USB_AUD_PLAY_PAUSE		= 0,
@@ -108,6 +103,11 @@ typedef struct {
 #define SPEAKER_VOL_DEF		0x8000     /* Volume default */
 #define SPEAKER_VOL_STEP	400
 
+/* Enable C linkage for C++ Compilers: */
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 int usbaud_handle_set_speaker_cmd(int type);
 int usbaud_handle_set_mic_cmd(int type);
 int usbaud_handle_get_speaker_cmd(int req, int type);
@@ -116,6 +116,7 @@ void usbaud_init(void);
 u8 usbaud_speaker_vol_get(void);
 u8 usbaud_mic_vol_get(void);
 void usbaud_mic_en(int en);
+
 /* Disable C linkage for C++ Compilers: */
 #if defined(__cplusplus)
 }

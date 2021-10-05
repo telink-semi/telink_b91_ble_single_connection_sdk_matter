@@ -46,9 +46,9 @@
 #ifndef LL_SCAN_H_
 #define LL_SCAN_H_
 
-
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief      for user to initialize scanning module
@@ -115,9 +115,8 @@ ble_sts_t    blc_ll_addScanningInConnSlaveRole(void);
  */
 ble_sts_t    blc_ll_removeScanningFromConnSLaveRole(void);
 
-
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* LL_SCAN_H_ */

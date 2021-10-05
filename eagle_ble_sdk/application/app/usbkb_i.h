@@ -152,3 +152,4 @@ static inline u16 usb_vendor_get_report_desc_size(void) {
 	return sizeof(vendor_report_desc);
 }
 #endif
+

@@ -179,6 +179,10 @@ extern unsigned int g_chip_version;
 /**********************************************************************************************************************
  *                                      global function prototype                                                     *
  *********************************************************************************************************************/
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief      This function reboot mcu.
  * @return     none
@@ -204,5 +208,9 @@ void sys_init(power_mode_e power_mode, vbat_type_e vbat_v);
  */
 
 int write_reg_table(const tbl_cmd_set_t * pt, int size);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

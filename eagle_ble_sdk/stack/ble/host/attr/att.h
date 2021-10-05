@@ -134,8 +134,9 @@ typedef int (*att_mtuSizeExchange_callback_t)(u16, u16);
  */
 typedef int (*att_handleValueConfirm_callback_t)(void);
 
-
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @brief	This function is used to set ATT table
@@ -237,6 +238,9 @@ void 	att_req_write_cmd (u8 *dat, u16 attHandle, u8 *buf, int len);
 
 #endif
 
+#ifdef __cplusplus
+}
+#endif
 
 
 

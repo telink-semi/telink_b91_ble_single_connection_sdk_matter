@@ -126,7 +126,9 @@
 //  round robbin foreach,   ´ÓÉÏÒ»¸öÖ¸¶¨µÄµã¿ªÊ¼£¬±éÀú,  h ÊÇÒ»¸ö¾²Ì¬±äÁ¿»òÈ«¾Ö±äÁ¿£¬Òª¼Ç×¡ÉÏÒ»´ÎµÄÎ»ÖÃ¡£h ³õÊ¼ÖµÊÇn !!!
 #define foreach_hint(i, n, h) 	for(int i = 0, ++h, h=h<n?h:0; i < n; ++h, h=h<n?h:0)
 
+#ifndef USE_ZEPHYR_HAL_HEADERS
 #define ARRAY_SIZE(a) 			(sizeof(a) / sizeof(*a))
+#endif /* USE_ZEPHYR_HAL_HEADERS */
 
 #define everyN(i, n) 			++(i); (i)=((i) < N ? (i) : 0); if(0 == (i))
 
@@ -139,6 +141,9 @@
 #define U32_BYTE3(a) (((a) >> 24) & 0xFF)
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 void swapN (unsigned char *p, int n);
 void swapX(const u8 *src, u8 *dst, int len);
@@ -153,6 +158,10 @@ void swap64(u8 dst[8], const u8 src[8]);
 void swap128(u8 dst[16], const u8 src[16]);
 
 void flip_addr(u8 *dest, u8 *src);
+
+#ifdef __cplusplus
+}
+#endif
 
 static inline u64 mul64_32x32(u32 u, u32 v)
 {
@@ -191,6 +200,11 @@ typedef	struct {
 	u8*		p;
 }	my_fifo_t;
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void my_fifo_init (my_fifo_t *f, int s, u8 n, u8 *p);
 u8* my_fifo_wptr (my_fifo_t *f);
 u8* my_fifo_wptr_v2 (my_fifo_t *f);
@@ -198,6 +212,10 @@ void my_fifo_next (my_fifo_t *f);
 int my_fifo_push (my_fifo_t *f, u8 *p, int n);
 void my_fifo_pop (my_fifo_t *f);
 u8 * my_fifo_get (my_fifo_t *f);
+
+#ifdef __cplusplus
+}
+#endif
 
 #define		MYFIFO_INIT(name,size,n)			u8 name##_b[size * n]={0};my_fifo_t name = {size,n,0,0, name##_b}
 

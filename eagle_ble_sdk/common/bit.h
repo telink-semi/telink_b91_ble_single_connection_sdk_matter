@@ -45,7 +45,7 @@
  *******************************************************************************************************/
 #pragma once
 
-#ifndef ZEPHYR
+#ifndef USE_ZEPHYR_HAL_HEADERS
 
 #include "macro_trick.h"
 
@@ -262,4 +262,4 @@
 	BFN_SET(attr2, x, ATTR2_PRIO);
 #endif
 
-#endif /* ZEPHYR */
+#endif /* USE_ZEPHYR_HAL_HEADERS */
