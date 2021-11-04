@@ -43,6 +43,9 @@
  *          SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *******************************************************************************************************/
+#define mmisc_ctl 0x7d0
+#define mcache_ctl 0x7ca
+
 #if	1	/*default is open*/
     .section .vectors, "ax"
 

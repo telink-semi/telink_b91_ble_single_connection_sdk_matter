@@ -47,6 +47,8 @@
 #define CORE_H
 #include "sys.h"
 
+// #define NDS_MXSTATUS            0x0 //TBD
+#define NDS_MEPC                0x341
 #define NDS_MIE                 0x304
 #define NDS_MILMB               0x7C0
 #define NDS_MDLMB               0x7C1

@@ -300,6 +300,13 @@ void  blc_ll_set_CustomedAdvScanAccessCode(u32 accss_code);
 ble_sts_t	blc_controller_check_appBufferInitialization(void);
 #endif
 
+u32 get_ble_end_event_tick(void);
+u32 get_ble_next_event_tick(void);
+u32 get_ble_event_state(void);
+
+void restore_ble_rf_context(void);
+void backup_ble_rf_context(void);
+void ble_radio_init(void);
 
 #ifdef __cplusplus
 }

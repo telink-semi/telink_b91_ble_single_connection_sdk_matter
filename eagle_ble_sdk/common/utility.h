@@ -46,7 +46,7 @@
 #pragma once
 #include "types.h"
 
-#define abs(a)   (((a)>0)?((a)):(-(a)))
+// #define abs(a)   (((a)>0)?((a)):(-(a)))
 
 #define cat2(i,j)       i##j
 #define cat3(i,j,k)     i##j##k

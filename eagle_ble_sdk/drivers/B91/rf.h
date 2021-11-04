@@ -1052,6 +1052,8 @@ _attribute_ram_code_sec_noinline_ void rf_start_brx  (void* addr, unsigned int t
  */
 _attribute_ram_code_sec_noinline_ void rf_start_btx (void* addr, unsigned int tick);
 
+void rf_baseband_reset(void);
+
 #ifdef __cplusplus
 }
 #endif

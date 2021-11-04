@@ -183,7 +183,6 @@ static inline unsigned char clock_get_system_clk()
 
 
 /******************************* trng_start ******************************************************************/
-#define rand trng_rand
 #define random_generator_init trng_init
 
 #ifdef __cplusplus
@@ -297,7 +296,8 @@ flash_capacity_e flash_get_capacity(void);
 
 
 /******************************* core_start ******************************************************************/
-#define SUPPORT_PFT_ARCH 1
+// #define SUPPORT_PFT_ARCH 1
+#define SUPPORT_PFT_ARCH 0
 /******************************* core_end ********************************************************************/
 
 

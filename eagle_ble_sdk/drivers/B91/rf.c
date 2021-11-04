@@ -1750,4 +1750,13 @@ void rf_set_ptx_retry(unsigned char retry_times, unsigned short retry_delay)
 	write_reg16(0x140a10, tmp);
 }
 
+/**
+ * @brief      This function serves to reset baseband
+ * @return     none
+ */
+void rf_baseband_reset(void)
+{
+	reg_rst3 &= (~FLD_RST3_ZB);      		  // reset baseband
+	reg_rst3 |= (FLD_RST3_ZB);				  // clr baseband
+}
 

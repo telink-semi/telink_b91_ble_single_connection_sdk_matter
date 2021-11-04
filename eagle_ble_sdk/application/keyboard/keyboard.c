@@ -48,6 +48,7 @@
 #include "drivers.h"
 #include "keyboard.h"
 #include "application/usbstd/usbkeycode.h"
+#include "app_config.h"
 
 
 #if (defined(KB_DRIVE_PINS) && defined(KB_SCAN_PINS))
