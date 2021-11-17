@@ -43,6 +43,8 @@
  *          SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *******************************************************************************************************/
+#include <assert.h>
+
 #include "tl_common.h"
 #include "drivers.h"
 #include "stack/ble/ble.h"
@@ -51,55 +53,55 @@
 #include "app.h"
 
 /**
- * @brief	Adv Packet data
- */
-const u8	tbl_advData[] = {
-	 0x05, 0x09, 'e', 'H', 'I', 'D',
-	 0x02, 0x01, 0x05, 							// BLE limited discoverable mode and BR/EDR not supported
-	 0x03, 0x19, 0x80, 0x01, 					// 384, Generic Remote Control, Generic category
-	 0x05, 0x02, 0x12, 0x18, 0x0F, 0x18,		// incomplete list of service class UUIDs (0x1812, 0x180F)
-};
-
-/**
- * @brief	Scan Response Packet data
- */
-const u8	tbl_scanRsp [] = {
-		 0x08, 0x09, 'e', 'S', 'a', 'm', 'p', 'l', 'e',
-	};
-
-/**
  * @brief		user initialization when MCU power on or wake_up from deepSleep mode
  * @param[in]	none
  * @return      none
  */
 _attribute_no_inline_ void user_init_normal(void)
 {
-	/* random number generator must be initiated here( in the beginning of user_init_nromal).
-	 * When deepSleep retention wakeUp, no need initialize again */
-	random_generator_init();  //this is must
+    u8 status = BLE_SUCCESS;
+    u8 mac_public[6];
+    u8 mac_random_static[6];
 
-	/* for 1M   Flash, flash_sector_mac_address equals to 0xFF000
-	 * for 2M   Flash, flash_sector_mac_address equals to 0x1FF000*/
-	u8  mac_public[6];
-	u8  mac_random_static[6];
-	blc_initMacAddress(flash_sector_mac_address, mac_public, mac_random_static);
+    static const u8	tbl_advData[] = {
+        0x05, 0x09, 'e', 'H', 'I', 'D',
+        0x02, 0x01, 0x05,                        // BLE limited discoverable mode and BR/EDR not supported
+        0x03, 0x19, 0x80, 0x01,                  // 384, Generic Remote Control, Generic category
+        0x05, 0x02, 0x12, 0x18, 0x0F, 0x18,      // incomplete list of service class UUIDs (0x1812, 0x180F)
+    };
 
-	blc_ll_initBasicMCU();                      //mandatory
-	blc_ll_initStandby_module(mac_public);		//mandatory
-	blc_ll_initAdvertising_module(); 	        //adv module: 		 mandatory for BLE slave,
-	blc_ll_initSlaveRole_module();				//slave module: 	 mandatory for BLE slave,
+    static const u8	tbl_scanRsp [] = {
+        0x08, 0x09, 'e', 'S', 'a', 'm', 'p', 'l', 'e',
+    };
 
-	u8 status = bls_ll_setAdvParam( ADV_INTERVAL_30MS, ADV_INTERVAL_35MS,
-								    ADV_TYPE_CONNECTABLE_UNDIRECTED, OWN_ADDRESS_PUBLIC,
-									0,  NULL,
-									BLT_ENABLE_ADV_ALL,
-									ADV_FP_NONE);
-	if(status != BLE_SUCCESS) { while(1); }  //debug: adv setting err
+    /* random number generator must be initiated here( in the beginning of user_init_nromal).
+     * When deepSleep retention wakeUp, no need initialize again */
+    random_generator_init();  //this is must
 
-	bls_ll_setAdvData( (u8 *)tbl_advData, sizeof(tbl_advData) );
-	bls_ll_setScanRspData( (u8 *)tbl_scanRsp, sizeof(tbl_scanRsp));
+    /* for 1M   Flash, flash_sector_mac_address equals to 0xFF000
+     * for 2M   Flash, flash_sector_mac_address equals to 0x1FF000*/
+    blc_initMacAddress(flash_sector_mac_address, mac_public, mac_random_static);
 
-	bls_ll_setAdvEnable(BLC_ADV_ENABLE);  //adv enable
+    blc_ll_initBasicMCU();                       //mandatory
+    blc_ll_initStandby_module(mac_public);       //mandatory
+    blc_ll_initAdvertising_module();             //adv module: 		 mandatory for BLE slave,
+    blc_ll_initSlaveRole_module();               //slave module: 	 mandatory for BLE slave,
+
+    status = bls_ll_setAdvParam( ADV_INTERVAL_30MS, ADV_INTERVAL_35MS,
+                                    ADV_TYPE_CONNECTABLE_UNDIRECTED, OWN_ADDRESS_PUBLIC,
+                                    0,  NULL,
+                                    BLT_ENABLE_ADV_ALL,
+                                    ADV_FP_NONE);
+    assert(status == BLE_SUCCESS);
+
+    status = bls_ll_setAdvData((u8 *)tbl_advData, sizeof(tbl_advData));
+    assert(status == BLE_SUCCESS);
+
+    status = bls_ll_setScanRspData((u8 *)tbl_scanRsp, sizeof(tbl_scanRsp));
+    assert(status == BLE_SUCCESS);
+
+    status = bls_ll_setAdvEnable(BLC_ADV_ENABLE);  //adv enable
+    assert(status == BLE_SUCCESS);
 }
 
 /**
@@ -109,10 +111,5 @@ _attribute_no_inline_ void user_init_normal(void)
  */
 _attribute_no_inline_ void main_loop (void)
 {
-	blt_sdk_main_loop();
+    blt_sdk_main_loop();
 }
-
-
-
-
-

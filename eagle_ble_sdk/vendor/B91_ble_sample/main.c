@@ -47,7 +47,7 @@
 #include "drivers.h"
 #include "stack/ble/ble.h"
 #include "app.h"
-
+#include "app_config.h"
 
 /**
  * @brief		BLE SDK RF interrupt handler.
