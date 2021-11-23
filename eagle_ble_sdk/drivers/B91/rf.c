@@ -166,6 +166,12 @@ void rf_set_ble_1M_mode(void)
 	write_reg8(0x140822,0x00);//rxchn_man_en.
 	write_reg8(0x140c4c,0x4c);//RX:acc_len modem.
 
+	write_reg32(0x140808,0x00000000);
+	write_reg8(0x140830,0x36);
+	write_reg8(0x140a06,0x00);
+	write_reg8(0x140a0c,0x50);
+	write_reg8(0x140a0e,0x00);
+	write_reg8(0x140a10,0x00);
 
 	g_rfmode = RF_MODE_BLE_1M;
 }

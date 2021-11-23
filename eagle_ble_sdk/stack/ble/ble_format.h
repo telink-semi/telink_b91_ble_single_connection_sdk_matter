@@ -51,6 +51,8 @@
 #include "stack/ble/ble_common.h"
 #include "stack/ble/ble_stack.h"
 
+#pragma pack(push, 1)
+
 /******************************************** Link Layer **************************************************************/
 
 typedef struct {
@@ -849,4 +851,7 @@ typedef struct {
 	u16	handle;
 	u8	uuid[16];
 } att_db_uuid128_t;			//20-byte
+
+#pragma pack(pop)
+
 #endif	/* BLE_FORMAT_H */
