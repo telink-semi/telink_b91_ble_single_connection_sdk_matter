@@ -192,6 +192,20 @@ static inline void rf_ble_tx_done()
  */
 void rf_switchPhyTestMode(rf_mode_e mode);
 
+/**
+ * @brief This function reset dma registrs to default (reset values)
+ * @param none
+ * @return none
+ */
+void rf_reset_dma(void);
+
+/**
+ * @brief This function reset radio registrs to default (reset values)
+ * @param none
+ * @return none
+ */
+void rf_radio_reset(void);
+
 #ifdef __cplusplus
 }
 #endif
