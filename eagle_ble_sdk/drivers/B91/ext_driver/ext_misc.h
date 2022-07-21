@@ -65,9 +65,8 @@
 #include "../timer.h"
 #include "../trng.h"
 #include "../uart.h"
-#include "types.h"
+#include "common/types.h"
 #include "compiler.h"
-#include "types.h"
 
 /******************************* stimer_start ******************************************************************/
 

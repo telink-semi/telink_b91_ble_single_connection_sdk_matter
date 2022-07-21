@@ -43,8 +43,6 @@
  *          SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *******************************************************************************************************/
-#ifndef USE_ZEPHYR_HAL_HEADERS
-
 #pragma once
 
 
@@ -63,6 +61,8 @@ typedef unsigned int u32;
 typedef long long s64;
 
 typedef unsigned long long u64;
+
+#ifndef USE_ZEPHYR_HAL_HEADERS
 
 #ifndef NULL
 #define NULL 	0
